@@ -1,6 +1,6 @@
 import Timer from "./Timer";
 
-function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, resetTimer }) {
+function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, resetTimer, roundScore }) {
     return (
       <div className="info-bar">
           <h1>InfoBar Placeholder</h1>
@@ -11,7 +11,14 @@ function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTi
           setTimerIsActive={setTimerIsActive}
           startTimer={startTimer}
           resetTimer={resetTimer}
+          roundScore={roundScore}
           />
+          <div className="round-score-div">
+              <h4>Round Score</h4>
+              <div>
+                  {roundScore}
+              </div>
+          </div>
       </div>
     );
   }

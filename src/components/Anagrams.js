@@ -1,9 +1,13 @@
-function Anagrams({ synonyms }) {
+function Anagrams({ synonyms, anagrams }) {
 
-    const synList = synonyms.map(syn => {
+    // const synObjs = synonyms.map(syn => {
+    //     return {"syn": syn, "isFound": false}
+    // })
+
+    const synList = anagrams.map(anagram => {
         return (
             <div>
-                {syn}
+                {anagram.anagram}
             </div>
         );
     })

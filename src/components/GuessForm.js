@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GuessForm({currentUser, currentGame, guess, setGuess}) {
+function GuessForm({ currentUser, currentGame, guess, setGuess, checkForMatches }) {
 
     function handleChange(e) {
         let newGuess = e.target.value
@@ -9,7 +9,8 @@ function GuessForm({currentUser, currentGame, guess, setGuess}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(guess)
+        checkForMatches(guess)
+        setGuess("")
     }
 
     const toRender = currentGame ? (

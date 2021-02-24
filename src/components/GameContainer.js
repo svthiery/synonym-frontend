@@ -8,6 +8,7 @@ function GameContainer({ currentUser }) {
   const [currentHeadword, setCurrentHeadword] = useState(null);
   const [currentPartOfSpeech, setCurrentPartOfSpeech] = useState(null);
   const [currentSynonyms, setCurrentSynonyms] = useState([]);
+  const [currentAnagrams, setCurrentAnagrams] = useState([]);
 
   const [roundScore, setRoundScore] = useState(0);
 
@@ -63,9 +64,45 @@ function GameContainer({ currentUser }) {
         // console.log(word);
         setCurrentHeadword(word.headword);
         setCurrentPartOfSpeech(word.part_of_speech);
-        setCurrentSynonyms(word.synonyms);
+        createSynObjs(word.synonyms);
         startTimer()
       });
+  }
+
+  function createSynObjs(synsArray) {
+    const synsObjs = synsArray.map(syn => {
+        return {"syn": syn, "anagram": syn, "isFound": false }
+    })
+    console.log(synsObjs)
+    setCurrentSynonyms(synsObjs)
+    createAnagramObjs(synsObjs)
+  }
+
+  function createAnagramObjs(synsToScramble) {
+    const anagrams = synsToScramble.map(syn => {
+        let anagram = scramble(syn.anagram)
+        return {"syn":syn.syn, "anagram": anagram, "isFound": false}
+    })
+    setCurrentAnagrams(anagrams)
+  }
+
+  function getRandomInt(n) {
+      return Math.floor(Math.random() * n)
+  }
+
+  function scramble(word) {
+    let arr = word.split('');
+    let n = arr.length;
+
+    for(let i=0; i < n-1 ; ++i) {
+        let j = getRandomInt(n);
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    let newWord = arr.join('');
+    return newWord
   }
 
   //-----------Timer Functions------------------
@@ -79,6 +116,19 @@ function GameContainer({ currentUser }) {
     setTimerIsActive(false);
   }
 
+  //-------------Guess Functions-------------------
+
+  function checkForMatches(currentGuess) {
+      
+    currentSynonyms.forEach(syn => {
+        if (currentGuess === syn) {
+            let newRoundScore = roundScore + 100
+            setRoundScore(newRoundScore)
+            console.log(roundScore)
+        }
+    })
+  }
+
   return (
     <div className="outer-game-container">
       <div className="game-container">
@@ -89,6 +139,7 @@ function GameContainer({ currentUser }) {
           setTimerIsActive={setTimerIsActive}
           startTimer={startTimer}
           resetTimer={resetTimer}
+          roundScore={roundScore}
         />
         <div className="headword-div">
           <div className="current-word">{currentHeadword}</div>
@@ -99,8 +150,8 @@ function GameContainer({ currentUser }) {
             <button onClick={handleNewGameClick}>Play</button>
           )}
         </div>
-        <GuessForm currentUser={currentUser} currentGame={currentGame} guess={guess} setGuess={setGuess}/>
-        <Anagrams synonyms={currentSynonyms} />
+        <GuessForm currentUser={currentUser} currentGame={currentGame} guess={guess} setGuess={setGuess} checkForMatches={checkForMatches}/>
+        <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams}/>
       </div>
     </div>
   );
