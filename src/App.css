@@ -95,3 +95,69 @@
 .user-scores:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
+
+/* ------ Synonym Game Play Page ------ */
+
+.outer-game-container {
+
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 25px;
+  flex-wrap: wrap;
+  background-color: #678a74;
+  align-content: space-around;
+  text-align: center;
+}
+
+.info-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 25px;
+  flex-wrap: wrap;
+  background-color:white;
+  align-content: space-around;
+  text-align: center;
+
+  height: 100px;
+  width: 1000px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+  margin-top: 30px;
+}
+
+.headword-div {
+  background-color: white;
+  height: 200px;
+  width: 400px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+}
+
+.guess-form {
+  background-color: white;
+  height: 150px;
+  width: 380px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+}
+
+.anagrams {
+  background-color: white;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
