@@ -1,6 +1,6 @@
 import Timer from "./Timer";
 
-function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive }) {
+function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, resetTimer }) {
     return (
       <div className="info-bar">
           <h1>InfoBar Placeholder</h1>
@@ -9,6 +9,8 @@ function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive }) {
           setSeconds={setSeconds} 
           timerIsActive={timerIsActive} 
           setTimerIsActive={setTimerIsActive}
+          startTimer={startTimer}
+          resetTimer={resetTimer}
           />
       </div>
     );

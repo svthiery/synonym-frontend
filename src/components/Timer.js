@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-function Timer() {
-  const [seconds, setSeconds] = useState(60);
-  const [isActive, setIsActive] = useState(false);
+function Timer({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, resetTimer }) {
 
   useEffect(() => {
     let interval = null;
-    if (isActive) {
+    if (timerIsActive) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds - 1);
       }, 1000);
-    } else if (!isActive && seconds !== 0) {
+    } else if (!timerIsActive && seconds !== 0) {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [timerIsActive, seconds]);
 
-  function toggle() {
-    setIsActive(!isActive);
-  }
-
-  function reset() {
-    setSeconds(60);
-    setIsActive(false);
-  }
 
   return (
     <div className="timer">
@@ -31,13 +21,13 @@ function Timer() {
       <div className="row">
         <button
           className={`button button-primary button-primary-${
-            isActive ? "active" : "inactive"
+            timerIsActive ? "active" : "inactive"
           }`}
-          onClick={toggle}
+          onClick={startTimer}
         >
-          {isActive ? "Pause" : "Start"}
+          {timerIsActive ? "Pause" : "Start"}
         </button>
-        <button className="button-secondary" onClick={reset}>Reset</button>
+        <button className="button-secondary" onClick={resetTimer}>Reset</button>
       </div>
     </div>
   );
