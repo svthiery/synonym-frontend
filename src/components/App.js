@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <Header />
+        <Header currentUser={currentUser} resetCurrentUser={setCurrentUser}/>
         <Switch>
           <Route path="/login" >
             <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>
