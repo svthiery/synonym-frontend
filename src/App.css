@@ -162,6 +162,10 @@
   margin-bottom: 30px;
 }
 
+.anagram-div {
+  margin: 6px;
+}
+
 .current-word {
   font-size: 80px;
 }

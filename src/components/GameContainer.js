@@ -120,12 +120,23 @@ function GameContainer({ currentUser }) {
 
   function checkForMatches(currentGuess) {
       
-    currentSynonyms.forEach(syn => {
-        if (currentGuess === syn) {
+    // currentSynonyms.forEach(syn => {
+    //     if (currentGuess === syn) {
+    //         let newRoundScore = roundScore + 100
+    //         setRoundScore(newRoundScore)
+    //         console.log(roundScore)
+    //     }
+    // })
+
+    currentAnagrams.forEach(anagram => {
+        if (currentGuess === anagram["syn"] && anagram["isFound"] === false) {
+            anagram["isFound"] = true
+            console.log(anagram)
             let newRoundScore = roundScore + 100
             setRoundScore(newRoundScore)
-            console.log(roundScore)
-        }
+        } else if (currentGuess === anagram["syn"] && anagram["isFound"] === true) {
+            alert("You already found this word!")
+        };
     })
   }
 

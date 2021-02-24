@@ -6,7 +6,7 @@ function Anagrams({ synonyms, anagrams }) {
 
     const synList = anagrams.map(anagram => {
         return (
-            <div>
+            <div className="anagram-div">
                 {anagram.anagram}
             </div>
         );
