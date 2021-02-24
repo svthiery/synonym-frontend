@@ -11,6 +11,8 @@ function GameContainer({ currentUser }) {
 
   const [roundScore, setRoundScore] = useState(0);
 
+  const [guess, setGuess] = useState("")
+
   //Timer State
   const [seconds, setSeconds] = useState(60);
   const [timerIsActive, setTimerIsActive] = useState(false);
@@ -97,7 +99,7 @@ function GameContainer({ currentUser }) {
             <button onClick={handleNewGameClick}>Play</button>
           )}
         </div>
-        <GuessForm />
+        <GuessForm currentUser={currentUser} currentGame={currentGame} guess={guess} setGuess={setGuess}/>
         <Anagrams synonyms={currentSynonyms} />
       </div>
     </div>
