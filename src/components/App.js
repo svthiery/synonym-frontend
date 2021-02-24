@@ -11,13 +11,14 @@ import UserScores from "./UserScores";
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
+
   return (
     <div className="app">
       <Router>
         <Header />
         <Switch>
-          <Route path="/login">
-            <Login />
+          <Route path="/login" >
+            <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>
           </Route>
           <Route exact path="/">
             <HomeContainer />
