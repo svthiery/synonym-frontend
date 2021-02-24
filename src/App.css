@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,63 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.app {
+  text-align: center;
+}
+
+/* ------ Homepage ------ */
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 25px;
+  flex-wrap: no-wrap;
+  background-color: #678a74;
+  align-content: space-around;
+  text-align: center;
+}
+
+.home-ant-container {
+  background-color: white;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+}
+
+.home-ant-container:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.home-syn-container {
+  background-color: white;
+  height: 420px;
+  width: 320px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+}
+
+.home-syn-container:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.user-scores {
+  background-color: white;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+}
+
+.user-scores:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }

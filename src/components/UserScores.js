@@ -1,7 +1,7 @@
 function UserScores() {
     return (
       <div className="user-scores">
-          <h1>UserScores Placeholder</h1>
+          <h2>UserScores Placeholder</h2>
       </div>
     );
   }
