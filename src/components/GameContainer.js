@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InfoBar from "./InfoBar";
 import Anagrams from "./Anagrams";
 import GuessForm from "./GuessForm";
+import FoundWords from "./FoundWords"
 
 function GameContainer({ currentUser }) {
   const [currentGame, setCurrentGame] = useState(null);
@@ -9,10 +10,12 @@ function GameContainer({ currentUser }) {
   const [currentPartOfSpeech, setCurrentPartOfSpeech] = useState(null);
   const [currentSynonyms, setCurrentSynonyms] = useState([]);
   const [currentAnagrams, setCurrentAnagrams] = useState([]);
+  const [foundSynonyms, setFoundSynonyms] = useState([])
 
   const [roundScore, setRoundScore] = useState(0);
 
   const [guess, setGuess] = useState("")
+  const [guessAlert, setGuessAlert] = useState("")
 
   //Timer State
   const [seconds, setSeconds] = useState(60);
@@ -38,7 +41,7 @@ function GameContainer({ currentUser }) {
   function startNewRound(newGame) {
     console.log(currentGame);
     let newGameId = newGame.id;
-    let randWordId = 1;
+    let randWordId = Math.floor(Math.random() * 6);
     fetch("http://localhost:3001/rounds", {
       method: "POST",
       headers: {
@@ -134,11 +137,34 @@ function GameContainer({ currentUser }) {
             console.log(anagram)
             let newRoundScore = roundScore + 100
             setRoundScore(newRoundScore)
+            let newFoundSyns = [...foundSynonyms, anagram]
+            setFoundSynonyms(newFoundSyns)
+            let newAnagrams = currentAnagrams.filter(anagram => {
+                return anagram["syn"] !== currentGuess
+            })
+            setCurrentAnagrams(newAnagrams)
         } else if (currentGuess === anagram["syn"] && anagram["isFound"] === true) {
-            alert("You already found this word!")
         };
-    })
+    });
+    // console.log(currentSynonyms.length, foundSynonyms.length)
+    // if (currentSynonyms.length === foundSynonyms.length) {
+    //     let won = "You guessed all the words!"
+    //     setGuessAlert(won)
+    // }
+    // console.log(currentAnagrams)
+    // if (currentAnagrams.length === 0) {
+    //     let won = "You guessed all the words!"
+    //     setGuessAlert(won)
+    // }
   }
+
+  useEffect(() => {
+      console.log(foundSynonyms.length, currentSynonyms.length)
+    if (foundSynonyms.length === currentSynonyms.length && foundSynonyms.length !== 0) {
+        let won = "You guessed all the words!"
+        setGuessAlert(won)
+    }
+  }, [foundSynonyms])
 
   return (
     <div className="outer-game-container">
@@ -161,8 +187,16 @@ function GameContainer({ currentUser }) {
             <button onClick={handleNewGameClick}>Play</button>
           )}
         </div>
-        <GuessForm currentUser={currentUser} currentGame={currentGame} guess={guess} setGuess={setGuess} checkForMatches={checkForMatches}/>
+        <GuessForm 
+            currentUser={currentUser} 
+            currentGame={currentGame} 
+            guess={guess} 
+            setGuess={setGuess} 
+            checkForMatches={checkForMatches}
+            guessAlert={guessAlert}
+        />
         <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams}/>
+        <FoundWords foundSynonyms={foundSynonyms}/>
       </div>
     </div>
   );

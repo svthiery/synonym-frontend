@@ -41,6 +41,18 @@
   text-align: center;
 }
 
+button {
+  border-radius: 30px;
+  border: no-border;
+  background-color: #ffbaba;
+  font-size: 12px;
+  padding: 12px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin: 5px;
+}
+
+
 /* ------ Homepage ------ */
 
 .home-container {
@@ -160,6 +172,7 @@
   box-shadow: 5px 8px #f7c5a8;
   margin-top: 30px;
   margin-bottom: 30px;
+  color: red;
 }
 
 .anagram-div {
@@ -168,4 +181,16 @@
 
 .current-word {
   font-size: 80px;
+}
+
+.found-words {
+  background-color: white;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: green;
 }

@@ -1,3 +1,5 @@
+// import Anagram from "./Anagram";
+
 function Anagrams({ synonyms, anagrams }) {
 
     // const synObjs = synonyms.map(syn => {
@@ -6,6 +8,10 @@ function Anagrams({ synonyms, anagrams }) {
 
     const synList = anagrams.map(anagram => {
         return (
+            // <Anagram 
+            // key={anagram.syn}
+            // anagram={anagram.anagram}
+            // syn={anagram.syn}/>
             <div className="anagram-div">
                 {anagram.anagram}
             </div>
