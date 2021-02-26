@@ -8,7 +8,7 @@ import EndRoundModal from "./EndRoundModal"
 
 function GameContainer({ currentUser }) {
   const [currentGame, setCurrentGame] = useState(null);
-  const [currentRound, setCurrentRound] = useState(0);
+  const [currentRound, setCurrentRound] = useState(null);
   const [gameScore, setGameScore] = useState(null);
   const [currentHeadword, setCurrentHeadword] = useState(null);
   const [currentPartOfSpeech, setCurrentPartOfSpeech] = useState(null);
@@ -34,13 +34,15 @@ function GameContainer({ currentUser }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id: currentUser.id }),
+      body: JSON.stringify({ user_id: currentUser.id, score: 0 }),
     })
       .then((response) => response.json())
       .then((newGameObj) => {
-        console.log("Success:", newGameObj);
+        console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
-        setCurrentRound(0)
+        let newRoundNum = null
+        setCurrentRound(null)
+        setGameScore(0)
         startNewRound(newGameObj);
       });
   }
@@ -48,7 +50,7 @@ function GameContainer({ currentUser }) {
   function startNewRound(newGame) {
     console.log(currentGame);
     let newGameId = newGame.id;
-    let randWordId = Math.floor(Math.random() * 6);
+    let randWordId = Math.ceil(Math.random() * 5);
     fetch("http://localhost:3001/rounds", {
       method: "POST",
       headers: {
@@ -61,8 +63,8 @@ function GameContainer({ currentUser }) {
       }),
     })
       .then((response) => response.json())
-      .then((newGameObj) => {
-        console.log("Success:", newGameObj);
+      .then((newRoundObj) => {
+        console.log("New Round Object", newRoundObj);
         getNewWord(randWordId);
         let newRoundNum = currentRound + 1
         setCurrentRound(newRoundNum)
@@ -145,9 +147,24 @@ function GameContainer({ currentUser }) {
       let newGameScore = gameScore + roundScore
       setGameScore(newGameScore)
       showEndRoundModal()
+      saveFinalScore()
       //Initiate modal with round score, game score, words guessed, etc.
       //Adds round score to game score
       //create play button that starts a new round
+  }
+
+  function saveFinalScore() {
+    fetch(`http://localhost:3001/games/${currentGame.id}`, {
+        method: 'PATCH', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({score: gameScore}),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
   }
 
   //-------------Guess Functions-------------------

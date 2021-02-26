@@ -1,6 +1,7 @@
 import Timer from "./Timer";
 
 function InfoBar({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, stopTimer, resetTimer, roundScore, currentRound, gameScore }) {
+    
     return (
       <div className="info-bar">
           <Timer 
