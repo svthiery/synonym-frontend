@@ -3,7 +3,7 @@ function FoundWords({foundSynonyms}) {
     const synList = foundSynonyms.map(synonym => {
         return (
             <div className="synonym-div">
-                {synonym.syn}
+                {synonym.syn.toUpperCase()}
             </div>
         );
     })

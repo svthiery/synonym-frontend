@@ -13,7 +13,7 @@ function Anagrams({ synonyms, anagrams }) {
             // anagram={anagram.anagram}
             // syn={anagram.syn}/>
             <div className="anagram-div">
-                {anagram.anagram}
+                {anagram.anagram.toUpperCase()}
             </div>
         );
     })

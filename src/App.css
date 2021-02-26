@@ -52,7 +52,6 @@ button {
   margin: 5px;
 }
 
-
 /* ------ Homepage ------ */
 
 .home-container {
@@ -194,3 +193,19 @@ button {
   margin-bottom: 30px;
   color: green;
 }
+
+/* ------ Modal ------ */
+
+.end-round-modal {
+  position:fixed;
+    background: white;
+    width: 40%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    box-shadow: 5px 8px #f7c5a8;
+    border-radius: 20px;
+}
+
