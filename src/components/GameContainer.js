@@ -15,6 +15,7 @@ function GameContainer({ currentUser }) {
   const [currentSynonyms, setCurrentSynonyms] = useState([]);
   const [currentAnagrams, setCurrentAnagrams] = useState([]);
   const [foundSynonyms, setFoundSynonyms] = useState([])
+  const [wordIdsUsed, setWordIdsUsed] = useState([])
 
   const [roundScore, setRoundScore] = useState(0);
 
@@ -65,18 +66,29 @@ function GameContainer({ currentUser }) {
       .then((response) => response.json())
       .then((newRoundObj) => {
         console.log("New Round Object", newRoundObj);
+        let usedWordId = randWordId
+        setWordIdsUsed([...wordIdsUsed, usedWordId])
         getNewWord(randWordId);
         let newRoundNum = currentRound + 1
         setCurrentRound(newRoundNum)
       });
   }
 
+//   function checkWordIsNotRepeat() {
+//     let randWordId = Math.ceil(Math.random() * 5);
+//     wordIdsUsed.forEach(wordId => {
+//         if (wordId === randWordId) {
+//             return randWordId
+//         }
+//     })
+//   }
+
   function getNewWord(wordId) {
     fetch(`http://localhost:3001/words/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         // console.log(word);
-        setCurrentHeadword(word.headword);
+        setCurrentHeadword(word.headword.toUpperCase());
         setCurrentPartOfSpeech(word.part_of_speech);
         resetTimer()
         setRoundScore(0)

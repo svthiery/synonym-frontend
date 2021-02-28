@@ -26,6 +26,7 @@ function GuessForm({
         <form onSubmit={handleSubmit} autoComplete="off">
           <label>Guess synonyms here:</label>
           <input
+            className="guess-form-input"
             type="text"
             name="guess"
             value={guess}

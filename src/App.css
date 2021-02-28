@@ -39,17 +39,19 @@
 
 .app {
   text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 button {
   border-radius: 30px;
   border: no-border;
   background-color: #ffbaba;
-  font-size: 12px;
+  font-size: 15px;
   padding: 12px;
   padding-right: 25px;
   padding-left: 25px;
   margin: 5px;
+  font-family: inherit;
 }
 
 /* ------ Homepage ------ */
@@ -107,6 +109,20 @@ button {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
+.syn-play-button {
+  font-size: 200px;
+  margin: 20px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.ant-play-button {
+  font-size: 130px;
+  margin: 20px;
+  padding-top: 50px;
+  text-align: center;
+}
+
 /* ------ Synonym Game Play Page ------ */
 
 .outer-game-container {
@@ -130,7 +146,7 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  column-gap: 25px;
+  column-gap: 30px;
   flex-wrap: wrap;
   background-color:white;
   align-content: space-around;
@@ -151,6 +167,7 @@ button {
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
+  margin: 25px;
 }
 
 .guess-form {
@@ -160,6 +177,15 @@ button {
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
+  margin: 25px;
+}
+
+.guess-form-input {
+  height: 85px;
+  width: 350px;
+  font-size: 75px;
+  border: none;
+  font-family: inherit;
 }
 
 .anagrams {
@@ -171,7 +197,7 @@ button {
   box-shadow: 5px 8px #f7c5a8;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: red;
+  margin: 25px;
 }
 
 .anagram-div {
@@ -180,6 +206,7 @@ button {
 
 .current-word {
   font-size: 80px;
+  margin: 25px;
 }
 
 .found-words {
@@ -191,7 +218,7 @@ button {
   box-shadow: 5px 8px #f7c5a8;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: green;
+  margin: 25px;
 }
 
 /* ------ Modal ------ */
@@ -199,8 +226,8 @@ button {
 .end-round-modal {
   position:fixed;
     background: white;
-    width: 40%;
-    height: auto;
+    width: 30%;
+    height: 30%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -209,3 +236,55 @@ button {
     border-radius: 20px;
 }
 
+/* ------ Nav Bar ------ */
+
+.header-name {
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 50px;
+}
+
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  /* float: left; */
+  height: 70px;
+}
+
+.nav-li {
+  float: right;
+}
+
+.nav-link {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+/* ------ Leaderboard ------ */
+
+.leaderboard {
+  margin: auto;
+  width: 40%;
+  text-align: center;
+}
+
+.leaderboard-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.high-score-li {
+  float: right;
+  width: 10%;
+  text-align: center;
+}

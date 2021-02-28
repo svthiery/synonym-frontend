@@ -1,19 +1,19 @@
 function Leaderboard({ games, currentUser }) {
 
-    const gamesList = games.slice(0, 4).map(game => {
+    const gamesList = games.slice(0, 10).map(game => {
         console.log(game.game_user)
         return (
-            <div>
+            <li className="high-score-li">
                 <div>{game.game_user}</div>
                 <div>{game.score}</div>
-            </div>
+            </li>
         );
     });
 
     return (
       <div className="leaderboard">
           <h1>Leaderboard</h1>
-          <div>{gamesList}</div>
+          <ul className="leaderboard-ul">{gamesList}</ul>
       </div>
     );
   }

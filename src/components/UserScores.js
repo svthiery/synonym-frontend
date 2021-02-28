@@ -1,7 +1,7 @@
 function UserScores({ games, currentUser }) {
 
 //   if (currentUser) {
-    const userGamesList = games.filter((game) => {
+    const userGamesList = games.slice(0, 10).filter((game) => {
       return game.user_id === currentUser.id;
     });
     const userGamesListShort = userGamesList.map(game => {
