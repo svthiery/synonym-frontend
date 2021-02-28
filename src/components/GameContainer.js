@@ -40,9 +40,9 @@ function GameContainer({ currentUser }) {
       .then((newGameObj) => {
         console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
-        let newRoundNum = null
-        setCurrentRound(null)
-        setGameScore(0)
+        let newRoundNum = 0
+        setCurrentRound(newRoundNum)
+        setGameScore(newGameObj.score)
         startNewRound(newGameObj);
       });
   }
@@ -59,7 +59,7 @@ function GameContainer({ currentUser }) {
       body: JSON.stringify({
         word_id: randWordId,
         game_id: newGameId,
-        score: roundScore,
+        score: 0,
       }),
     })
       .then((response) => response.json())
@@ -154,6 +154,7 @@ function GameContainer({ currentUser }) {
   }
 
   function saveFinalScore() {
+      console.log(gameScore)
     fetch(`http://localhost:3001/games/${currentGame.id}`, {
         method: 'PATCH', // or 'PUT'
         headers: {

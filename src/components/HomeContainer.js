@@ -2,7 +2,7 @@ import UserScores from "./UserScores"
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function HomeContainer() {
+function HomeContainer({ games, currentUser }) {
 
   const history = useHistory();
 
@@ -18,7 +18,7 @@ function HomeContainer() {
         <div className="home-syn-container" onClick={handlePlaySynonym}>
           <h2>synonym</h2>
         </div>
-        <UserScores />
+        { currentUser ? <UserScores games={games} currentUser={currentUser}/> : <div></div>}
     </div>
   );
 }

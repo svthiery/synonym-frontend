@@ -1,9 +1,24 @@
-function UserScores() {
-    return (
-      <div className="user-scores">
-          <h2>UserScores Placeholder</h2>
-      </div>
-    );
-  }
-  
-  export default UserScores;
+function UserScores({ games, currentUser }) {
+
+//   if (currentUser) {
+    const userGamesList = games.filter((game) => {
+      return game.user_id === currentUser.id;
+    });
+    const userGamesListShort = userGamesList.map(game => {
+        return (
+            <div>
+                {game.score}
+            </div>
+        )
+    })
+//   }
+
+  return (
+    <div className="user-scores">
+      <h2>Your High Scores</h2>
+      <div>{userGamesListShort}</div>
+    </div>
+  );
+}
+
+export default UserScores;
