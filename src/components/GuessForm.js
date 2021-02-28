@@ -9,7 +9,7 @@ function GuessForm({
   guessAlert,
 }) {
   function handleChange(e) {
-    let newGuess = e.target.value;
+    let newGuess = e.target.value.toUpperCase();
     setGuess(newGuess);
   }
 

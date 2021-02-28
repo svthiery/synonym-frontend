@@ -37,10 +37,10 @@ function App() {
           <Route path="/play">
             <GameContainer currentUser={currentUser} />
           </Route>
-          <Route path="/scores">
+          {/* <Route path="/scores">
             <Leaderboard games={games} currentUser={currentUser}/>
             { currentUser ? <UserScores games={games} currentUser={currentUser}/> : <div></div>}
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     </div>

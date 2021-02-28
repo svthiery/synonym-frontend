@@ -22,7 +22,7 @@ function Header({ currentUser, resetCurrentUser }) {
         </li>
         {currentUser ? (
           <>
-            <li className="nav-li">
+            {/* <li className="nav-li">
               <NavLink
                 activeClassName="active"
                 to="/scores"
@@ -30,7 +30,7 @@ function Header({ currentUser, resetCurrentUser }) {
               >
                 Leaderboard
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-li">
               <div
                 className="logout"
