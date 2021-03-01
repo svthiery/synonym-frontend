@@ -17,7 +17,7 @@ function EndRoundModal({ showModal, setShowModal, gameScore, roundScore, foundSy
           {foundSynonyms.length > 1 ? <p className="end-round-message">Congratulations, you found {foundSynonyms.length} synonyms!</p> : <p className="end-round-message">Game Over!</p>}
           <p>Game Score: {gameScore}</p>
           <p>Round Score: {roundScore}</p>
-          {foundSynonyms.length > 1 ? <button onClick={handleNextRound}>Next Round</button> : <button onClick={handleNewGame}>New Game</button>}
+          {foundSynonyms.length > 1 ? <button onClick={handleNextRound}>NEXT ROUND</button> : <button onClick={handleNewGame}>NEW GAME</button>}
       </div>
       ) : (
         null

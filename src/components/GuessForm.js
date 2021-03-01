@@ -34,7 +34,7 @@ function GuessForm({
             onChange={handleChange}
           />
           <br></br>
-          <input className="login-btn" type="submit" value="Guess"/>
+          <input className="login-btn" type="submit" value="GUESS"/>
         </form>
       </div>
       <div>{guessAlert}</div>

@@ -11,16 +11,19 @@ function HomeContainer({ games, currentUser }) {
   }
 
   return (
-    <div className="home-container">
-        <div className="home-ant-container">
-          <h2>antonym</h2>
-          <p className="ant-play-button">>></p>
-        </div>
-        <div className="home-syn-container" onClick={handlePlaySynonym}>
-          <h2>synonym</h2>
-          <p className="syn-play-button">>></p>
-        </div>
-        { currentUser ? <UserScores games={games} currentUser={currentUser}/> : <div></div>}
+    <div>
+      <h1 className="title">Synonym</h1>
+      <div className="home-container">
+          <div className="home-ant-container">
+            <h2>antonym</h2>
+            <p className="ant-play-button">>></p>
+          </div>
+          <div className="home-syn-container" onClick={handlePlaySynonym}>
+            <h2>synonym</h2>
+            <p className="syn-play-button">>></p>
+          </div>
+          { currentUser ? <UserScores games={games} currentUser={currentUser}/> : <div></div>}
+      </div>
     </div>
   );
 }

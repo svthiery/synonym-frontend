@@ -45,7 +45,7 @@
 button, .login-btn {
   border-radius: 30px;
   border: no-border;
-  background-color: #ffbaba;
+  background-color: #ffeadb;
   font-size: 15px;
   padding: 12px;
   padding-right: 25px;
@@ -56,6 +56,15 @@ button, .login-btn {
 
 
 /* ------ Homepage ------ */
+
+.title {
+  background-color: #678a74;
+  margin: 0px;
+  padding: 25px;
+  color: #ffeadb;
+  font-size: 45px;
+  text-shadow: 2px 2px black;
+}
 
 .home-container {
   display: flex;
@@ -128,7 +137,7 @@ button, .login-btn {
 
 .outer-game-container {
   background-color:#678a74;
-  padding: 80px;
+  padding: 70px;
 }
 
 .game-container {
@@ -153,6 +162,7 @@ button, .login-btn {
   border-style: solid;
   border-width: 2px;
   border-color: gray;
+
 }
 
 .info-bar {
@@ -161,7 +171,7 @@ button, .login-btn {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  column-gap: 30px;
+  column-gap: 60px;
   /* flex-wrap: wrap; */
   background-color:white;
   align-content: space-around;
@@ -185,15 +195,15 @@ button, .login-btn {
 .headword-div {
   /* grid-area: headword; */
   background-color: white;
-  height: 200px;
+  height: 150px;
   width: 100%;
   border-radius: 10px;
   text-align: center;
   /* box-shadow: 5px 8px #f7c5a8; */
   margin: 25px;
+  margin-bottom: 10px;
 }
 .guess-form-outer-div {
-  grid-area: guess;
   width: 100%;
   text-align: center;
 }
@@ -205,20 +215,21 @@ button, .login-btn {
   border-radius: 10px;
   text-align: center;
   /* box-shadow: 5px 8px #f7c5a8; */
-  margin: 25px;
+  /* margin: 25px; */
   font-family: inherit;
   outline: none;
 }
 
 .guess-form-input {
   height: 85px;
-  width: 450px;
+  width: 400px;
   font-size: 75px;
   border: none;
   font-family: inherit;
   color: gray;
   outline: none;
   caret-color: #678a74;
+  text-align: center;
 }
 
 .anagrams {
@@ -258,10 +269,12 @@ button, .login-btn {
 
 .synonym-div {
   color: green;
+  margin: 6px;
 }
 
 .unfound-word-div {
  color: red;
+ margin: 6px;
 }
 
 /* ------ Modal ------ */
@@ -329,6 +342,7 @@ button, .login-btn {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 35px;
+  text-shadow: 2px 2px #ffeadb;
 }
 
 .nav-link:visited {
