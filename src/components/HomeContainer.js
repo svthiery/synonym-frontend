@@ -7,7 +7,11 @@ function HomeContainer({ games, currentUser }) {
   const history = useHistory();
 
   function handlePlaySynonym() {
-    history.push("/play");
+    if (currentUser) {
+      history.push("/play");
+    } else {
+      history.push("/login")
+    }
   }
 
   return (
@@ -22,7 +26,7 @@ function HomeContainer({ games, currentUser }) {
             <h2>synonym</h2>
             <p className="syn-play-button">>></p>
           </div>
-          { currentUser ? <UserScores games={games} currentUser={currentUser}/> : <div></div>}
+          { currentUser ? <UserScores games={games} currentUser={currentUser} /> : <div></div>}
       </div>
     </div>
   );

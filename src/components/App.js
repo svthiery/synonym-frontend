@@ -22,6 +22,8 @@ function App() {
       });
   }, []);
 
+
+
   return (
     <div className="app">
       <Router>
@@ -31,7 +33,7 @@ function App() {
             <Login setCurrentUser={setCurrentUser} currentUser={currentUser} />
           </Route>
           <Route exact path="/">
-            <HomeContainer currentUser={currentUser} games={games}/>
+            <HomeContainer currentUser={currentUser} games={games} />
             <Leaderboard games={games} currentUser={currentUser}/>
           </Route>
           <Route path="/play">

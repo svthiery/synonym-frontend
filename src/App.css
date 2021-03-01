@@ -369,7 +369,7 @@ button, .login-btn {
 }
 
 .high-score-li {
-  float: right;
+  float: left;
   width: 10%;
   text-align: center;
 }

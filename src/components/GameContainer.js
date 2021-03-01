@@ -6,8 +6,9 @@ import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal"
+import soundfile from "../assets/109662__grunz__success.mp3"
 
-function GameContainer({ currentUser }) {
+function GameContainer({ currentUser, userGamesList }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
   const [gameScore, setGameScore] = useState(0);
@@ -54,6 +55,7 @@ function GameContainer({ currentUser }) {
     console.log(currentGame);
     let newGameId = newGame.id;
     let randWordId = Math.ceil(Math.random() * 5);
+    console.log(randWordId)
     fetch("http://localhost:3001/rounds", {
       method: "POST",
       headers: {
@@ -70,6 +72,7 @@ function GameContainer({ currentUser }) {
         console.log("New Round Object", newRoundObj);
         let usedWordId = randWordId
         setWordIdsUsed([...wordIdsUsed, usedWordId])
+        console.log(wordIdsUsed)
         getNewWord(randWordId);
         let newRoundNum = currentRound + 1
         setCurrentRound(newRoundNum)
@@ -78,11 +81,17 @@ function GameContainer({ currentUser }) {
 
 //   function checkWordIsNotRepeat() {
 //     let randWordId = Math.ceil(Math.random() * 5);
+//     let matchFound = false
 //     wordIdsUsed.forEach(wordId => {
 //         if (wordId === randWordId) {
-//             return randWordId
+//             matchFound = true
 //         }
 //     })
+//     if (matchFound === false) {
+//         return randWordId
+//     } else {
+//         checkWordIsNotRepeat()
+//     }
 //   }
 
   function getNewWord(wordId) {
@@ -157,7 +166,6 @@ function GameContainer({ currentUser }) {
   }
 
   function endRound() {
-      showEndRoundModal()
       let newGameScore = gameScore + roundScore
       setGameScore(newGameScore)
       showEndRoundModal()
@@ -234,6 +242,8 @@ function GameContainer({ currentUser }) {
     }
   }, [foundSynonyms])
 
+
+
   ////Sound Effects
 
 //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
@@ -279,6 +289,7 @@ function GameContainer({ currentUser }) {
             startNewRound={startNewRound}
             currentGame={currentGame}
             handleNewGameClick={handleNewGameClick}
+            
             />
             {currentGame ? <GuessForm 
                 currentUser={currentUser} 
