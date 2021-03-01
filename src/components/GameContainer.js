@@ -4,7 +4,8 @@ import InfoBar from "./InfoBar";
 import Anagrams from "./Anagrams";
 import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
-import EndRoundModal from "./EndRoundModal"
+import EndRoundModal from "./EndRoundModal";
+import WrongGuessModal from "./WrongGuessModal"
 
 function GameContainer({ currentUser }) {
   const [currentGame, setCurrentGame] = useState(null);
@@ -23,6 +24,7 @@ function GameContainer({ currentUser }) {
   const [guessAlert, setGuessAlert] = useState("")
 
   const [showModal, setShowModal] = useState(false)
+  const [showWrongGuessModal, setShowWrongGuessModal] = useState(false)
 
   //Timer State
   const [seconds, setSeconds] = useState(30);
@@ -188,17 +190,12 @@ function GameContainer({ currentUser }) {
 
   function checkForMatches(currentGuess) {
       
-    // currentSynonyms.forEach(syn => {
-    //     if (currentGuess === syn) {
-    //         let newRoundScore = roundScore + 100
-    //         setRoundScore(newRoundScore)
-    //         console.log(roundScore)
-    //     }
-    // })
+    let foundMatch = false
 
     currentAnagrams.forEach(anagram => {
         if (currentGuess === anagram["syn"] && anagram["isFound"] === false) {
             anagram["isFound"] = true
+            foundMatch = true
             console.log(anagram)
             let newRoundScore = roundScore + 100
             setRoundScore(newRoundScore)
@@ -209,8 +206,7 @@ function GameContainer({ currentUser }) {
             })
             setCurrentAnagrams(newAnagrams)
             // playWinSound()
-        } else if (currentGuess === anagram["syn"] && anagram["isFound"] === true) {
-        };
+        } 
     });
     // console.log(currentSynonyms.length, foundSynonyms.length)
     // if (currentSynonyms.length === foundSynonyms.length) {
@@ -222,6 +218,10 @@ function GameContainer({ currentUser }) {
     //     let won = "You guessed all the words!"
     //     setGuessAlert(won)
     // }
+    if (foundMatch === false) {
+        setShowWrongGuessModal(true)
+        setTimeout(function(){ setShowWrongGuessModal(false)}, 1000);
+    }
   }
 
   useEffect(() => {
@@ -256,6 +256,10 @@ function GameContainer({ currentUser }) {
           gameScore={gameScore}
         />
         <div className="headword-and-guess-div">
+            <WrongGuessModal 
+                showWrongGuessModal={showWrongGuessModal}
+                setShowWrongGuessModal={setShowWrongGuessModal}
+            />
             <div className="headword-div">
             <div className="current-word">{currentHeadword}</div>
             <div className="current-part-of-speech">{currentPartOfSpeech}</div>

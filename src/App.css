@@ -299,6 +299,10 @@ button, .login-btn {
   font-size: 30px;
 }
 
+.wrong-guess-modal {
+  color:red;
+}
+
 /* ------ Nav Bar ------ */
 
 .header-name {
