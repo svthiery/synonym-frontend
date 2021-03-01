@@ -8,8 +8,8 @@ import EndRoundModal from "./EndRoundModal"
 
 function GameContainer({ currentUser }) {
   const [currentGame, setCurrentGame] = useState(null);
-  const [currentRound, setCurrentRound] = useState(null);
-  const [gameScore, setGameScore] = useState(null);
+  const [currentRound, setCurrentRound] = useState(0);
+  const [gameScore, setGameScore] = useState(0);
   const [currentHeadword, setCurrentHeadword] = useState(null);
   const [currentPartOfSpeech, setCurrentPartOfSpeech] = useState(null);
   const [currentSynonyms, setCurrentSynonyms] = useState([]);
@@ -180,6 +180,10 @@ function GameContainer({ currentUser }) {
       })
   }
 
+  function showUnfoundWords() {
+
+  }
+
   //-------------Guess Functions-------------------
 
   function checkForMatches(currentGuess) {
@@ -251,36 +255,38 @@ function GameContainer({ currentUser }) {
           currentRound={currentRound}
           gameScore={gameScore}
         />
-        <div className="headword-div">
-          <div className="current-word">{currentHeadword}</div>
-          <div className="current-part-of-speech">{currentPartOfSpeech}</div>
-          {currentGame ? (
-            <div></div>
-          ) : (
-            <button onClick={handleNewGameClick}>Play</button>
-          )}
+        <div className="headword-and-guess-div">
+            <div className="headword-div">
+            <div className="current-word">{currentHeadword}</div>
+            <div className="current-part-of-speech">{currentPartOfSpeech}</div>
+            {currentGame ? (
+                <div></div>
+            ) : (
+                <button onClick={handleNewGameClick}>Play</button>
+            )}
+            </div>
+            <EndRoundModal 
+            showModal={showModal} 
+            setShowModal={setShowModal}
+            gameScore={gameScore}
+            roundScore={roundScore}
+            foundSynonyms={foundSynonyms}
+            anagrams={currentAnagrams}
+            startNewRound={startNewRound}
+            currentGame={currentGame}
+            handleNewGameClick={handleNewGameClick}
+            />
+            {currentGame ? <GuessForm 
+                currentUser={currentUser} 
+                currentGame={currentGame} 
+                guess={guess} 
+                setGuess={setGuess} 
+                checkForMatches={checkForMatches}
+                guessAlert={guessAlert}
+            /> : <div></div>}
         </div>
-        <EndRoundModal 
-        showModal={showModal} 
-        setShowModal={setShowModal}
-        gameScore={gameScore}
-        roundScore={roundScore}
-        foundSynonyms={foundSynonyms}
-        anagrams={currentAnagrams}
-        startNewRound={startNewRound}
-        currentGame={currentGame}
-        handleNewGameClick={handleNewGameClick}
-        />
-        <GuessForm 
-            currentUser={currentUser} 
-            currentGame={currentGame} 
-            guess={guess} 
-            setGuess={setGuess} 
-            checkForMatches={checkForMatches}
-            guessAlert={guessAlert}
-        />
-        <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams}/>
-        <FoundWords foundSynonyms={foundSynonyms}/>
+        {currentGame ? <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams} showModal={showModal}/> : <div></div>}
+        {currentGame ? <FoundWords foundSynonyms={foundSynonyms} showModal={showModal} anagrams={currentAnagrams} /> : <div></div>}
       </div>
     </div>
   );

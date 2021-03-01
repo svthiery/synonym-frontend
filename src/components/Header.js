@@ -13,8 +13,9 @@ function Header({ currentUser, resetCurrentUser }) {
   return (
       <div>
     <div className="header">
-      <h1 className="header-name">Synonym</h1>
+      {/* <h1 className="header-name">Synonym</h1> */}
       <ul className="nav-bar">
+          {/* <li className="nav-li"><h1 className="nav-heading-name">Synonym</h1></li> */}
         <li className="nav-li">
           <NavLink exact activeClassName="active" to="/" className="nav-link">
             Home

@@ -42,7 +42,7 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
-button {
+button, .login-btn {
   border-radius: 30px;
   border: no-border;
   background-color: #ffbaba;
@@ -53,6 +53,7 @@ button {
   margin: 5px;
   font-family: inherit;
 }
+
 
 /* ------ Homepage ------ */
 
@@ -126,75 +127,108 @@ button {
 /* ------ Synonym Game Play Page ------ */
 
 .outer-game-container {
-
+  background-color:#678a74;
+  padding: 80px;
 }
 
 .game-container {
   display: flex;
+  /* grid-template-areas:
+      "info-bar info-bar"
+      "headword headword"
+      "guess guess"
+      "anagrams found-words";
+  grid-template-columns: 2fr 2fr; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: 25px;
   flex-wrap: wrap;
-  background-color: #678a74;
+  /* background-color: #678a74; */
   align-content: space-around;
   text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 8px #f7c5a8;
+  border-style: solid;
+  border-width: 2px;
+  border-color: gray;
 }
 
 .info-bar {
+  /* grid-area: info-bar; */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: 30px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   background-color:white;
   align-content: space-around;
   text-align: center;
 
   height: 100px;
-  width: 1000px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 5px 8px #f7c5a8;
+  width: 100%;
+  border-radius: 10px;
+  /* box-shadow: 5px 8px #f7c5a8; */
   margin-top: 30px;
 }
 
+.headword-and-guess-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .headword-div {
+  /* grid-area: headword; */
   background-color: white;
   height: 200px;
-  width: 400px;
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 5px 8px #f7c5a8;
+  /* box-shadow: 5px 8px #f7c5a8; */
   margin: 25px;
+}
+.guess-form-outer-div {
+  grid-area: guess;
+  width: 100%;
+  text-align: center;
 }
 
 .guess-form {
   background-color: white;
   height: 150px;
-  width: 380px;
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 5px 8px #f7c5a8;
+  /* box-shadow: 5px 8px #f7c5a8; */
   margin: 25px;
+  font-family: inherit;
+  outline: none;
 }
 
 .guess-form-input {
   height: 85px;
-  width: 350px;
+  width: 450px;
   font-size: 75px;
   border: none;
   font-family: inherit;
+  color: gray;
+  outline: none;
+  caret-color: #678a74;
 }
 
 .anagrams {
+  /* grid-area: anagrams; */
   background-color: white;
   height: 350px;
-  width: 250px;
-  border-radius: 20px;
+  width: 20%;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 5px 8px #f7c5a8;
+  /* box-shadow: 5px 8px #f7c5a8; */
   margin-top: 30px;
   margin-bottom: 30px;
   margin: 25px;
@@ -210,15 +244,24 @@ button {
 }
 
 .found-words {
+  /* grid-area: found-words; */
   background-color: white;
   height: 350px;
-  width: 250px;
-  border-radius: 20px;
+  width: 20%;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 5px 8px #f7c5a8;
+  /* box-shadow: 5px 8px #f7c5a8; */
   margin-top: 30px;
   margin-bottom: 30px;
   margin: 25px;
+}
+
+.synonym-div {
+  color: green;
+}
+
+.unfound-word-div {
+ color: red;
 }
 
 /* ------ Modal ------ */
@@ -233,7 +276,14 @@ button {
     transform: translate(-50%,-50%);
     text-align: center;
     box-shadow: 5px 8px #f7c5a8;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+}
+
+.end-round-message {
+  font-size: 30px;
 }
 
 /* ------ Nav Bar ------ */
@@ -254,6 +304,19 @@ button {
   display: block;
   /* float: left; */
   height: 70px;
+  /* border-style: solid;
+  border-width: 2px;
+  border-color: gray; */
+  background-color: #f7c5a8;
+}
+
+.nav-heading-name {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 45px;
+  float: left;
 }
 
 .nav-li {
@@ -266,6 +329,10 @@ button {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 35px;
+}
+
+.nav-link:visited {
+  color: black;
 }
 
 /* ------ Leaderboard ------ */

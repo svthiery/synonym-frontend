@@ -21,18 +21,20 @@ function GuessForm({
   }
 
   const toRender = currentGame ? (
-    <div>
+    <div className="guess-form-outer-div" >
       <div className="guess-form">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <label>Guess synonyms here:</label>
           <input
+            autofocus="true"
+            autoselect
             className="guess-form-input"
             type="text"
             name="guess"
             value={guess}
             onChange={handleChange}
           />
-          <input className="login-btn" type="submit" value="Guess" />
+          <br></br>
+          <input className="login-btn" type="submit" value="Guess"/>
         </form>
       </div>
       <div>{guessAlert}</div>
