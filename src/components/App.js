@@ -11,6 +11,7 @@ import UserScores from "./UserScores";
 import HelpModal from "./HelpModal";
 
 function App() {
+  
   const [currentUser, setCurrentUser] = useState(null);
   const [games, setGames] = useState([]);
 
