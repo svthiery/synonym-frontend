@@ -7,6 +7,7 @@ function GuessForm({
   setGuess,
   checkForMatches,
   guessAlert,
+  guessFormDisabled
 }) {
   function handleChange(e) {
     let newGuess = e.target.value.toUpperCase();
@@ -26,12 +27,13 @@ function GuessForm({
         <form onSubmit={handleSubmit} autoComplete="off">
           <input
             autofocus="true"
-            autoselect
+            autoselect="true"
             className="guess-form-input"
             type="text"
             name="guess"
             value={guess}
             onChange={handleChange}
+            disabled={guessFormDisabled}
           />
           <br></br>
           <input className="login-btn" type="submit" value="GUESS"/>

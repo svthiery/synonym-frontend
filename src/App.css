@@ -40,6 +40,11 @@
 .app {
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
+  background-color: #ffeadb;
+}
+
+body {
+  background-color: #ffeadb;
 }
 
 button, .login-btn {
@@ -96,7 +101,7 @@ button, .login-btn {
   height: 420px;
   width: 320px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
@@ -113,6 +118,10 @@ button, .login-btn {
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
+}
+
+.indv-user-score {
+  margin: 6px;
 }
 
 .user-scores:hover {
@@ -160,7 +169,7 @@ button, .login-btn {
   border-radius: 10px;
   box-shadow: 5px 8px #f7c5a8;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: gray;
 
 }
@@ -202,6 +211,7 @@ button, .login-btn {
   /* box-shadow: 5px 8px #f7c5a8; */
   margin: 25px;
   margin-bottom: 10px;
+  margin-top: 0px;
 }
 .guess-form-outer-div {
   width: 100%;
@@ -252,6 +262,11 @@ button, .login-btn {
 .current-word {
   font-size: 80px;
   margin: 25px;
+  margin-top: 0px;
+}
+
+.current-part-of-speech {
+  margin: 5px;
 }
 
 .found-words {
@@ -303,7 +318,27 @@ button, .login-btn {
   color:red;
 }
 
+.help-modal {
+  position:fixed;
+    background: white;
+    width: 30%;
+    height: 30%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    box-shadow: 5px 8px #f7c5a8;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
 /* ------ Nav Bar ------ */
+
+.header {
+  border-bottom: 2px solid gray;
+}
 
 .header-name {
   text-align: left;
@@ -359,6 +394,7 @@ button, .login-btn {
   margin: auto;
   width: 40%;
   text-align: center;
+  background-color: #ffeadb;
 }
 
 .leaderboard-ul {
@@ -366,10 +402,26 @@ button, .login-btn {
   margin: 0;
   padding: 0;
   text-align: center;
+  background-color: #ffeadb;
 }
 
 .high-score-li {
   float: left;
   width: 10%;
   text-align: center;
+  background-color: #ffeadb;
 }
+
+/* ------ Modal ------ */
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  float: left;
+  margin-top: 150px;
+  padding: 10px;
+  color: gray;
+}
+
+/* ------ Play Button ------ */

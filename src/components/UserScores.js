@@ -8,7 +8,7 @@ function UserScores({ currentUser, games }) {
 
     const userGamesListShort = userGamesList.map(game => {
         return (
-            <div>
+            <div className="indv-user-score">
                 {game.score}
             </div>
         )

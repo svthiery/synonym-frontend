@@ -1,13 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import HelpModal from "./HelpModal"
 
-function Header({ currentUser, resetCurrentUser }) {
+function Header({ currentUser, resetCurrentUser, showHelpModal, setShowHelpModal }) {
   const history = useHistory();
 
   function handleLogout() {
     resetCurrentUser(null);
     history.push("/");
+  }
+
+  function handleHelp() {
+    setShowHelpModal(true)
   }
 
   return (
@@ -41,6 +46,15 @@ function Header({ currentUser, resetCurrentUser }) {
                 Log Out
               </div>
             </li>
+            <li className="nav-li">
+              <div
+                className="help"
+                onClick={handleHelp}
+                className="nav-link"
+              >
+                Help
+              </div>
+            </li>
           </>
         ) : (
           <>
@@ -61,6 +75,15 @@ function Header({ currentUser, resetCurrentUser }) {
               >
                 Login
               </NavLink>
+            </li>
+            <li className="nav-li">
+              <div
+                className="help"
+                onClick={handleHelp}
+                className="nav-link"
+              >
+                Help
+              </div>
             </li>
           </>
         )}

@@ -23,15 +23,18 @@ function GameContainer({ currentUser, userGamesList }) {
 
   const [guess, setGuess] = useState("")
   const [guessAlert, setGuessAlert] = useState("")
+  const [guessFormDisabled, setGuessFormDisabled] = useState(false)
 
   const [showModal, setShowModal] = useState(false)
   const [showWrongGuessModal, setShowWrongGuessModal] = useState(false)
+  const [showHelpModal, setShowHelpModal] = useState(false)
 
   //Timer State
   const [seconds, setSeconds] = useState(30);
   const [timerIsActive, setTimerIsActive] = useState(false);
 
   function handleNewGameClick() {
+    setCurrentRound(0)
     // Create new game
     fetch("http://localhost:3001/games", {
       method: "POST",
@@ -44,8 +47,7 @@ function GameContainer({ currentUser, userGamesList }) {
       .then((newGameObj) => {
         console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
-        let newRoundNum = 0
-        setCurrentRound(newRoundNum)
+        console.log(currentRound)
         setGameScore(newGameObj.score)
         startNewRound(newGameObj);
       });
@@ -54,7 +56,7 @@ function GameContainer({ currentUser, userGamesList }) {
   function startNewRound(newGame) {
     console.log(currentGame);
     let newGameId = newGame.id;
-    let randWordId = Math.ceil(Math.random() * 5);
+    let randWordId = Math.ceil(Math.random() * 7);
     console.log(randWordId)
     fetch("http://localhost:3001/rounds", {
       method: "POST",
@@ -74,8 +76,8 @@ function GameContainer({ currentUser, userGamesList }) {
         setWordIdsUsed([...wordIdsUsed, usedWordId])
         console.log(wordIdsUsed)
         getNewWord(randWordId);
-        let newRoundNum = currentRound + 1
-        setCurrentRound(newRoundNum)
+        // let newRoundNum = currentRound + 1
+        // setCurrentRound(newRoundNum)
       });
   }
 
@@ -101,11 +103,14 @@ function GameContainer({ currentUser, userGamesList }) {
         // console.log(word);
         setCurrentHeadword(word.headword.toUpperCase());
         setCurrentPartOfSpeech(word.part_of_speech);
+        setGuessFormDisabled(false)
         resetTimer()
         setRoundScore(0)
         setFoundSynonyms([])
         createSynObjs(word.synonyms);
         startTimer()
+        let newRoundNum = currentRound + 1
+        setCurrentRound(currentRound + 1)
       });
   }
 
@@ -168,6 +173,7 @@ function GameContainer({ currentUser, userGamesList }) {
   function endRound() {
       let newGameScore = gameScore + roundScore
       setGameScore(newGameScore)
+      setGuessFormDisabled(true)
       showEndRoundModal()
       saveFinalScore()
       //Initiate modal with round score, game score, words guessed, etc.
@@ -237,6 +243,8 @@ function GameContainer({ currentUser, userGamesList }) {
         // let won = "You guessed all the words!"
         // setGuessAlert(won)
         // playWinSound()
+        // let bonusScore = roundScore + 500
+        // setRoundScore(bonusScore)
         stopTimer()
         showEndRoundModal()
     }
@@ -289,6 +297,8 @@ function GameContainer({ currentUser, userGamesList }) {
             startNewRound={startNewRound}
             currentGame={currentGame}
             handleNewGameClick={handleNewGameClick}
+            setCurrentRound={setCurrentRound}
+            currentRound={currentRound}
             
             />
             {currentGame ? <GuessForm 
@@ -298,6 +308,7 @@ function GameContainer({ currentUser, userGamesList }) {
                 setGuess={setGuess} 
                 checkForMatches={checkForMatches}
                 guessAlert={guessAlert}
+                guessFormDisabled={guessFormDisabled}
             /> : <div></div>}
         </div>
         {currentGame ? <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams} showModal={showModal}/> : <div></div>}

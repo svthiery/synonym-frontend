@@ -9,7 +9,9 @@ function EndRoundModal({
   startNewRound,
   currentGame,
   handleNewGameClick,
-  userGamesList
+  userGamesList,
+  setCurrentRound,
+  currentRound
 }) {
   function handleNextRound() {
     setShowModal(false);
@@ -17,6 +19,7 @@ function EndRoundModal({
   }
 
   function handleNewGame() {
+    setCurrentRound(0);
     setShowModal(false);
     handleNewGameClick();
   }
@@ -25,7 +28,7 @@ function EndRoundModal({
     <div className="end-round-modal">
       {foundSynonyms.length > 1 ? (
         <p className="end-round-message">
-          Congratulations, you found {foundSynonyms.length} synonyms!
+          You found {foundSynonyms.length} synonyms!
         </p>
       ) : (
         <p className="end-round-message">Game Over!</p> 
