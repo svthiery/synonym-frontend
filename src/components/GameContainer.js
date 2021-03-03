@@ -27,7 +27,6 @@ function GameContainer({ currentUser, userGamesList }) {
 
   const [showModal, setShowModal] = useState(false)
   const [showWrongGuessModal, setShowWrongGuessModal] = useState(false)
-  const [showHelpModal, setShowHelpModal] = useState(false)
 
   //Timer State
   const [seconds, setSeconds] = useState(30);
@@ -108,6 +107,7 @@ function GameContainer({ currentUser, userGamesList }) {
         setRoundScore(0)
         setFoundSynonyms([])
         createSynObjs(word.synonyms);
+        setGuess("")
         startTimer()
         let newRoundNum = currentRound + 1
         setCurrentRound(currentRound + 1)
@@ -234,7 +234,7 @@ function GameContainer({ currentUser, userGamesList }) {
     // }
     if (foundMatch === false) {
         setShowWrongGuessModal(true)
-        setTimeout(function(){ setShowWrongGuessModal(false)}, 1000);
+        setTimeout(function(){ setShowWrongGuessModal(false)}, 1500);
     }
   }
 
