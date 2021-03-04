@@ -250,8 +250,6 @@ function GameContainer({ currentUser, userGamesList }) {
     }
   }, [foundSynonyms])
 
-
-
   ////Sound Effects
 
 //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"

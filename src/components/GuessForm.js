@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function GuessForm({
   currentUser,
@@ -21,13 +21,18 @@ function GuessForm({
     setGuess("");
   }
 
+  useEffect(() => {
+    let guessInput = document.querySelector(".guess-form-input");
+    guessInput.focus();
+}, [guessFormDisabled])
+
   const toRender = currentGame ? (
     <div className="guess-form-outer-div" >
       <div className="guess-form">
         <form onSubmit={handleSubmit} autoComplete="off">
           <input
-            autofocus="true"
-            autoselect="true"
+            autoFocus="true"
+            autoSelect="true"
             className="guess-form-input"
             type="text"
             name="guess"
