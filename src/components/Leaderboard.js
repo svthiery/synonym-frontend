@@ -1,7 +1,6 @@
 function Leaderboard({ games, currentUser }) {
 
     const gamesList = games.slice(0, 10).map(game => {
-        console.log(game.game_user)
         return (
             <li className="high-score-li">
                 <div>{game.game_user}</div>

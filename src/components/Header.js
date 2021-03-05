@@ -55,6 +55,7 @@ function Header({ currentUser, resetCurrentUser, showHelpModal, setShowHelpModal
                 Help
               </div>
             </li>
+            <div className="logged-in-as">Logged in as {currentUser.username}</div>
           </>
         ) : (
           <>

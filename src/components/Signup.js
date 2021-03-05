@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Login({ setCurrentUser, currentUser }) {
+function Signup({ setCurrentUser }) {
     const [formData, setFormData] = useState({
       username: "",
       password: "",
@@ -21,7 +21,7 @@ function Login({ setCurrentUser, currentUser }) {
       e.preventDefault();
       // TODO: login the user
       // POST /login
-      fetch("http://localhost:3001/login", {
+      fetch("http://localhost:3001/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,15 +30,16 @@ function Login({ setCurrentUser, currentUser }) {
       })
         .then((r) => r.json())
         .then((data) => {
-          // use the response to set state
-        //   console.log(user)
             if (data.errors) {
-                setErrors(data.errors)
-                setFormData({
-                    username: "",
-                    password: "",
-                  })
+                setErrors(data.errors);
+                // setFormData({
+                //     username: "",
+                //     password: "",
+                //   })
             } else {
+                // const { user, token } = data;
+
+                // localStorage.setItem("token", token);
                 setCurrentUser(data);
                 history.push("/");
             };
@@ -47,9 +48,9 @@ function Login({ setCurrentUser, currentUser }) {
   
   
     return (
-      <div className="login">
+      <div className="signup">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <h1>Login</h1>
+          <h1>Sign Up</h1>
           <label>Username</label>
           <input
             type="text"
@@ -67,10 +68,10 @@ function Login({ setCurrentUser, currentUser }) {
           {errors.map(error => {
               return <p>{error}</p>
           })}
-          <input className="login-btn" type="submit" value="LOG IN" />
+          <input className="signup-btn" type="submit" value="REGISTER" />
         </form>
       </div>
     );
   }
   
-  export default Login;
+  export default Signup;

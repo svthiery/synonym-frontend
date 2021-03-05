@@ -59,7 +59,7 @@ function GuessForm({
         <form onSubmit={handleSubmit} autoComplete="off" className="form">
           <input
             autoFocus="true"
-            autoSelect="true"
+            autoselect="true"
             className="guess-form-input"
             type="text"
             name="guess"

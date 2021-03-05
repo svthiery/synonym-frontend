@@ -5,6 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import HomeContainer from "./HomeContainer";
 import Login from "./Login";
+import Signup from "./Signup";
 import GameContainer from "./GameContainer";
 import Leaderboard from "./Leaderboard";
 import UserScores from "./UserScores";
@@ -71,6 +72,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <Login setCurrentUser={setCurrentUser} currentUser={currentUser} />
+          </Route>
+          <Route path="/signup">
+            <Signup setCurrentUser={setCurrentUser} />
           </Route>
           <Route exact path="/">
             <HomeContainer currentUser={currentUser} games={games} />

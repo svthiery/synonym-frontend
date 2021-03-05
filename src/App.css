@@ -47,7 +47,7 @@ body {
   background-color: #ffeadb;
 }
 
-button, .login-btn {
+button, .login-btn, .signup-btn {
   border-radius: 30px;
   border: no-border;
   background-color: #ffeadb;
@@ -395,6 +395,10 @@ button, .login-btn {
 .nav-link:hover {
   text-shadow: 2px 2px black;
   color: #ffeadb;
+}
+
+.logged-in-as {
+  float: left;
 }
 
 /* ------ Leaderboard ------ */
