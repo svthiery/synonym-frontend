@@ -15,9 +15,9 @@ function GuessForm({
   }
 
   function handleSubmit(e) {
-      console.log(e)
+    console.log(e);
     e.preventDefault();
-    let capGuess = guess.toUpperCase()
+    let capGuess = guess.toUpperCase();
     checkForMatches(capGuess);
     setGuess("");
   }
@@ -25,34 +25,36 @@ function GuessForm({
   useEffect(() => {
     let guessInput = document.querySelector(".guess-form-input");
     guessInput.focus();
-}, [guessFormDisabled])
+  }, [guessFormDisabled]);
 
-// Microphone
+  // Microphone
 
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription(
-  "de62f611b6e44532ac74fcb92e019042",
-  "eastus"
-);
+  const sdk = require("microsoft-cognitiveservices-speech-sdk");
+  const speechConfig = sdk.SpeechConfig.fromSubscription(
+    "de62f611b6e44532ac74fcb92e019042",
+    "eastus"
+  );
 
-function fromMic() {
-  let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-  console.log(audioConfig)
-  let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+  function fromMic() {
+    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+    console.log(audioConfig);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 
-  console.log("Speak into your microphone.");
-  recognizer.recognizeOnceAsync((result) => {
-    console.log(`RECOGNIZED: Text=${result.text}`);
-    let textGuess = result.text.toUpperCase()
-    let newGuess = textGuess.substring(0, textGuess.length-1)
-    setGuess(newGuess)
-    checkForMatches(newGuess);
-    setGuess("");
-  });
-}
+    console.log("Speak into your microphone.");
+    recognizer.recognizeOnceAsync((result) => {
+      console.log(`RECOGNIZED: Text=${result.text}`);
+      if (result.text) {
+        let textGuess = result.text.toUpperCase();
+        let newGuess = textGuess.substring(0, textGuess.length - 1);
+        setGuess(newGuess);
+        setTimeout(function(){ setGuess("")}, 1500)
+        checkForMatches(newGuess);
+      }
+    });
+  }
 
   const toRender = currentGame ? (
-    <div className="guess-form-outer-div" >
+    <div className="guess-form-outer-div">
       <div className="guess-form">
         <form onSubmit={handleSubmit} autoComplete="off" className="form">
           <input
@@ -66,7 +68,7 @@ function fromMic() {
             disabled={guessFormDisabled}
           />
           <br></br>
-          <input className="login-btn" type="submit" value="GUESS"/>
+          <input className="login-btn" type="submit" value="GUESS" />
           <button onClick={fromMic}>🎤</button>
         </form>
       </div>

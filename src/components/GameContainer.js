@@ -233,7 +233,8 @@ function GameContainer({ currentUser, userGamesList }) {
     //     let won = "You guessed all the words!"
     //     setGuessAlert(won)
     // }
-    if (foundMatch === false) {
+    if (foundMatch === false && currentGuess) {
+        console.log(currentGuess)
         setShowWrongGuessModal(true)
         setTimeout(function(){ setShowWrongGuessModal(false)}, 1500);
     }
