@@ -35,6 +35,16 @@ function App() {
 
   const [showHelpModal, setShowHelpModal] = useState(false);
 
+  //autologin
+  useEffect(() => {
+    fetch("http://localhost:3001/me")
+      .then((r) => r.json())
+      .then((user) => {
+        console.log(user)
+        setCurrentUser(user)
+      });
+  }, [])
+
   useEffect(() => {
     fetch("http://localhost:3001/games")
       .then((response) => response.json())
