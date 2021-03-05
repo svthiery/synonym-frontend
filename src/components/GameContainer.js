@@ -7,6 +7,9 @@ import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal"
 import soundfile from "../assets/109662__grunz__success.mp3"
+import soundfiletwo from "../assets/109662__grunz__success.wav"
+import loseSound from "../assets/lose__trumpet-cry.wav"
+import correctSound from "../assets/correct-choice.wav"
 
 function GameContainer({ currentUser, userGamesList }) {
   const [currentGame, setCurrentGame] = useState(null);
@@ -220,7 +223,7 @@ function GameContainer({ currentUser, userGamesList }) {
                 return anagram["syn"] !== currentGuess
             })
             setCurrentAnagrams(newAnagrams)
-            // playWinSound()
+            playCorrectSound()
         } 
     });
     // console.log(currentSynonyms.length, foundSynonyms.length)
@@ -249,6 +252,7 @@ function GameContainer({ currentUser, userGamesList }) {
         // setRoundScore(bonusScore)
         stopTimer()
         showEndRoundModal()
+        playWinSound()
     }
   }, [foundSynonyms])
 
@@ -256,7 +260,9 @@ function GameContainer({ currentUser, userGamesList }) {
 
 //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
 
-//   const [playWinSound] = useSound(winSoundUrl);
+  const [playWinSound] = useSound(soundfiletwo);
+  const [playLoseSound] = useSound(loseSound)
+  const [playCorrectSound] = useSound(correctSound)
 
   return (
     <div className="outer-game-container">
