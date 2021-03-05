@@ -28,6 +28,7 @@ function GameContainer({ currentUser, userGamesList }) {
   const [showModal, setShowModal] = useState(false)
   const [showWrongGuessModal, setShowWrongGuessModal] = useState(false)
 
+
   //Timer State
   const [seconds, setSeconds] = useState(30);
   const [timerIsActive, setTimerIsActive] = useState(false);
