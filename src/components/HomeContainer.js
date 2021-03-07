@@ -14,11 +14,19 @@ function HomeContainer({ games, currentUser }) {
     }
   }
 
+  function handlePlayAntonym() {
+    if (currentUser) {
+      history.push("/playantonym");
+    } else {
+      history.push("/login")
+    }
+  }
+
   return (
     <div>
       <h1 className="title">Synonym</h1>
       <div className="home-container">
-          <div className="home-ant-container">
+          <div className="home-ant-container" onClick={handlePlayAntonym}>
             <h2>antonym</h2>
             <p className="ant-play-button">>></p>
           </div>

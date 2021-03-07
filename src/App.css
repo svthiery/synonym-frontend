@@ -92,6 +92,10 @@ button, .login-btn, .signup-btn {
   box-shadow: 5px 8px #f7c5a8;
 }
 
+.home-ant-container:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
 /* .home-ant-container:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 } */

@@ -11,7 +11,8 @@ function EndRoundModal({
   handleNewGameClick,
   userGamesList,
   setCurrentRound,
-  currentRound
+  currentRound,
+  setWordIdsUsed
 }) {
   function handleNextRound() {
     setShowModal(false);
@@ -20,6 +21,7 @@ function EndRoundModal({
 
   function handleNewGame() {
     setCurrentRound(0);
+    setWordIdsUsed(prevWordsArr => ([]))
     setShowModal(false);
     handleNewGameClick();
   }

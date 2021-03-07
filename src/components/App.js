@@ -7,6 +7,7 @@ import HomeContainer from "./HomeContainer";
 import Login from "./Login";
 import Signup from "./Signup";
 import GameContainer from "./GameContainer";
+import AntonymGameContainer from "./AntonymGameContainer";
 import Leaderboard from "./Leaderboard";
 import UserScores from "./UserScores";
 import HelpModal from "./HelpModal";
@@ -89,6 +90,9 @@ function App() {
           </Route>
           <Route path="/play">
             <GameContainer currentUser={currentUser} />
+          </Route>
+          <Route path="/playantonym">
+            <AntonymGameContainer currentUser={currentUser} />
           </Route>
           {/* <Route path="/scores">
             <Leaderboard games={games} currentUser={currentUser}/>

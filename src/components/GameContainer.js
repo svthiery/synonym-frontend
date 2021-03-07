@@ -38,13 +38,14 @@ function GameContainer({ currentUser, userGamesList }) {
 
   function handleNewGameClick() {
     setCurrentRound(0)
+    console.log(wordIdsUsed)
     // Create new game
     fetch("http://localhost:3001/games", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id: currentUser.id, score: 0 }),
+      body: JSON.stringify({ user_id: currentUser.id, score: 0, category: "synonym" }),
     })
       .then((response) => response.json())
       .then((newGameObj) => {
@@ -94,19 +95,7 @@ function GameContainer({ currentUser, userGamesList }) {
   }
 
   function checkWordIsNotRepeat(randWordId) {
-    // let matchFound = false
     return wordIdsUsed.includes(randWordId)
-    // wordIdsUsed.forEach(wordId => {
-    //     if (wordId === randWordId) {
-    //         matchFound = true
-    //         return matchFound
-    //     }
-    // })
-    // if (matchFound === false) {
-    //     return randWordId
-    // } else {
-    //     checkWordIsNotRepeat()
-    // }
   }
 
   function getNewWord(wordId) {
@@ -124,7 +113,8 @@ function GameContainer({ currentUser, userGamesList }) {
         setGuess("")
         startTimer()
         let newRoundNum = currentRound + 1
-        setCurrentRound(currentRound + 1)
+        // setCurrentRound(currentRound + 1)
+        setCurrentRound((prevRoundValue) => prevRoundValue + 1)
       });
   }
 
@@ -315,7 +305,7 @@ function GameContainer({ currentUser, userGamesList }) {
             handleNewGameClick={handleNewGameClick}
             setCurrentRound={setCurrentRound}
             currentRound={currentRound}
-            
+            setWordIdsUsed={setWordIdsUsed}
             />
             {currentGame ? <GuessForm 
                 currentUser={currentUser} 
