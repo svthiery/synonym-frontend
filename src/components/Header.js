@@ -66,7 +66,7 @@ function Header({ currentUser, resetCurrentUser, showHelpModal, setShowHelpModal
                 to="/signup"
                 className="nav-link"
               >
-                Signup
+                Sign Up
               </NavLink>
             </li>
             <li className="nav-li">
@@ -75,7 +75,7 @@ function Header({ currentUser, resetCurrentUser, showHelpModal, setShowHelpModal
                 to="/login"
                 className="nav-link"
               >
-                Login
+                Log In
               </NavLink>
             </li>
             <li className="nav-li">

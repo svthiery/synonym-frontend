@@ -292,7 +292,7 @@ button, .login-btn, .signup-btn {
  margin: 6px;
 }
 
-/* ------ Modal ------ */
+/* ------ Modals ------ */
 
 .end-round-modal {
   position:fixed;
@@ -425,7 +425,7 @@ button, .login-btn, .signup-btn {
   background-color: #ffeadb;
 }
 
-/* ------ Modal ------ */
+/* ------ Footer ------ */
 
 .footer {
   width: 100%;
@@ -437,4 +437,12 @@ button, .login-btn, .signup-btn {
   color: gray;
 }
 
-/* ------ Play Button ------ */
+/* ------ Login and Signup ------ */
+
+.username-div, .password-div {
+  padding: 5px;
+}
+
+.error {
+  color: red;
+}
