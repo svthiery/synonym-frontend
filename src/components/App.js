@@ -38,12 +38,19 @@ function App() {
 
   //autologin
   useEffect(() => {
-    fetch("http://localhost:3001/me")
+    const token = localStorage.getItem("token")
+    if (token) {
+    fetch("http://localhost:3001/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((r) => r.json())
       .then((user) => {
         console.log(user)
         setCurrentUser(user)
       });
+    }
   }, [])
 
   useEffect(() => {

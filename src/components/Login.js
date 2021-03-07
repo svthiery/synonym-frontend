@@ -39,7 +39,11 @@ function Login({ setCurrentUser, currentUser }) {
                     password: "",
                   })
             } else {
-                setCurrentUser(data);
+                const { user, token } = data
+
+                localStorage.setItem("token", token)
+                
+                setCurrentUser(user);
                 history.push("/");
             };
         }); 

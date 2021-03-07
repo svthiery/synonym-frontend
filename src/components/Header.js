@@ -7,6 +7,7 @@ function Header({ currentUser, resetCurrentUser, showHelpModal, setShowHelpModal
   const history = useHistory();
 
   function handleLogout() {
+    localStorage.removeItem("token");
     resetCurrentUser(null);
     history.push("/");
   }

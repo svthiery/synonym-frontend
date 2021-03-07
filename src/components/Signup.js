@@ -37,10 +37,10 @@ function Signup({ setCurrentUser }) {
                 //     password: "",
                 //   })
             } else {
-                // const { user, token } = data;
+                const { user, token } = data;
 
-                // localStorage.setItem("token", token);
-                setCurrentUser(data);
+                localStorage.setItem("token", token);
+                setCurrentUser(user);
                 history.push("/");
             };
         }); 
