@@ -50,16 +50,25 @@ function GameContainer({ currentUser, userGamesList }) {
       .then((newGameObj) => {
         console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
-        console.log(currentRound)
+        // console.log(currentRound)
         setGameScore(newGameObj.score)
         startNewRound(newGameObj);
       });
   }
 
   function startNewRound(newGame) {
-    console.log(currentGame);
+    // console.log(currentGame);
     let newGameId = newGame.id;
-    let randWordId = Math.ceil(Math.random() * 7);
+    let randWordId = null;
+    let i = 0;
+    do {
+        i += 1;
+        randWordId = Math.ceil(Math.random() * 7);
+        console.log({randWordId, i})
+    } while (checkWordIsNotRepeat(randWordId));
+    // if (checkWordIsNotRepeat(randWordId)) {
+    //     randWordId = Math.ceil(Math.random() * 7);
+    // }
     console.log(randWordId)
     fetch("http://localhost:3001/rounds", {
       method: "POST",
@@ -74,7 +83,7 @@ function GameContainer({ currentUser, userGamesList }) {
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
-        console.log("New Round Object", newRoundObj);
+        // console.log("New Round Object", newRoundObj);
         let usedWordId = randWordId
         setWordIdsUsed([...wordIdsUsed, usedWordId])
         console.log(wordIdsUsed)
@@ -84,20 +93,21 @@ function GameContainer({ currentUser, userGamesList }) {
       });
   }
 
-//   function checkWordIsNotRepeat() {
-//     let randWordId = Math.ceil(Math.random() * 5);
-//     let matchFound = false
-//     wordIdsUsed.forEach(wordId => {
-//         if (wordId === randWordId) {
-//             matchFound = true
-//         }
-//     })
-//     if (matchFound === false) {
-//         return randWordId
-//     } else {
-//         checkWordIsNotRepeat()
-//     }
-//   }
+  function checkWordIsNotRepeat(randWordId) {
+    // let matchFound = false
+    return wordIdsUsed.includes(randWordId)
+    // wordIdsUsed.forEach(wordId => {
+    //     if (wordId === randWordId) {
+    //         matchFound = true
+    //         return matchFound
+    //     }
+    // })
+    // if (matchFound === false) {
+    //     return randWordId
+    // } else {
+    //     checkWordIsNotRepeat()
+    // }
+  }
 
   function getNewWord(wordId) {
     fetch(`http://localhost:3001/words/${wordId}`)
@@ -214,7 +224,7 @@ function GameContainer({ currentUser, userGamesList }) {
         if (currentGuess === anagram["syn"] && anagram["isFound"] === false) {
             anagram["isFound"] = true
             foundMatch = true
-            console.log(anagram)
+            // console.log(anagram)
             let newRoundScore = roundScore + 100
             setRoundScore(newRoundScore)
             let newFoundSyns = [...foundSynonyms, anagram]

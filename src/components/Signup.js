@@ -53,6 +53,7 @@ function Signup({ setCurrentUser }) {
         <div className="username-div">
           <label>Username </label>
           <input
+          className="login-input"
             type="text"
             name="username"
             value={formData.username}
@@ -62,6 +63,7 @@ function Signup({ setCurrentUser }) {
           <div className="password-div">
           <label>Password </label>
           <input
+          className="login-input"
             type="password"
             name="password"
             value={formData.password}

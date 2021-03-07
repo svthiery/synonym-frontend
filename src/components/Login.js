@@ -50,12 +50,13 @@ function Login({ setCurrentUser, currentUser }) {
 
   return (
     <div className="login">
-      <h1>Login</h1>
+      <h1>Log In</h1>
       <div className="login-form-box">
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="username-div">
             <label>Username </label>
             <input
+            className="login-input"
               type="text"
               name="username"
               value={formData.username}
@@ -65,6 +66,7 @@ function Login({ setCurrentUser, currentUser }) {
           <div className="password-div">
             <label>Password </label>
             <input
+            className="login-input"
               type="password"
               name="password"
               value={formData.password}

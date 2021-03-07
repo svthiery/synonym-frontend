@@ -446,3 +446,10 @@ button, .login-btn, .signup-btn {
 .error {
   color: red;
 }
+
+.login-input {
+  height: 20px;
+  font-size: 18px;
+  font-family: inherit;
+  color: gray;
+}
