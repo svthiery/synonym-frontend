@@ -5,11 +5,12 @@ import Anagrams from "./Anagrams";
 import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
-import WrongGuessModal from "./WrongGuessModal"
-import soundfile from "../assets/109662__grunz__success.mp3"
-import soundfiletwo from "../assets/109662__grunz__success.wav"
-import loseSound from "../assets/lose__trumpet-cry.wav"
-import correctSound from "../assets/correct-choice.wav"
+import WrongGuessModal from "./WrongGuessModal";
+import soundfile from "../assets/109662__grunz__success.mp3";
+import soundfiletwo from "../assets/109662__grunz__success.wav";
+import wrongSound from "../assets/wrong-buzz.wav";
+import correctSound from "../assets/correct-choice.wav";
+import gameOverSound from "../assets/game-over.mp3";
 
 function GameContainer({ currentUser, userGamesList, showModal, setShowModal, showHelpModal }) {
   const [currentGame, setCurrentGame] = useState(null);
@@ -171,6 +172,9 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
   }
 
   function showEndRoundModal() {
+      if (foundSynonyms.length === 0) {
+        playGameOverSound()
+      }
       setShowModal(true)
   }
 
@@ -239,7 +243,8 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
     if (foundMatch === false && currentGuess) {
         console.log(currentGuess)
         setShowWrongGuessModal(true)
-        setTimeout(function(){ setShowWrongGuessModal(false)}, 1500);
+        playWrongSound()
+        setTimeout(function(){ setShowWrongGuessModal(false)}, 1600);
     }
   }
 
@@ -258,11 +263,10 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
 
   ////Sound Effects
 
-//   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
-
-  const [playWinSound] = useSound(soundfiletwo);
-  const [playLoseSound] = useSound(loseSound)
-  const [playCorrectSound] = useSound(correctSound)
+  const [playWinSound] = useSound(soundfiletwo, { volume: 0.15});
+  const [playWrongSound] = useSound(wrongSound, {volume: 0.15 })
+  const [playCorrectSound] = useSound(correctSound, { volume: 0.15})
+  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.15})
 
   return (
     <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>
