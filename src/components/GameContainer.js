@@ -11,7 +11,7 @@ import soundfiletwo from "../assets/109662__grunz__success.wav"
 import loseSound from "../assets/lose__trumpet-cry.wav"
 import correctSound from "../assets/correct-choice.wav"
 
-function GameContainer({ currentUser, userGamesList }) {
+function GameContainer({ currentUser, userGamesList, showModal, setShowModal, showHelpModal }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
   const [gameScore, setGameScore] = useState(0);
@@ -28,7 +28,7 @@ function GameContainer({ currentUser, userGamesList }) {
   const [guessAlert, setGuessAlert] = useState("")
   const [guessFormDisabled, setGuessFormDisabled] = useState(false)
 
-  const [showModal, setShowModal] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
   const [showWrongGuessModal, setShowWrongGuessModal] = useState(false)
 
 
@@ -265,7 +265,7 @@ function GameContainer({ currentUser, userGamesList }) {
   const [playCorrectSound] = useSound(correctSound)
 
   return (
-    <div className="outer-game-container">
+    <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>
       <div className="game-container">
         <InfoBar
           seconds={seconds}

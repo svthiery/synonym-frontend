@@ -2,7 +2,7 @@ import UserScores from "./UserScores"
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function HomeContainer({ games, currentUser }) {
+function HomeContainer({ games, currentUser, showHelpModal }) {
 
   const history = useHistory();
 
@@ -24,13 +24,13 @@ function HomeContainer({ games, currentUser }) {
 
   return (
     <div>
-      <h1 className="title">Synonym</h1>
-      <div className="home-container">
-          <div className="home-ant-container" onClick={handlePlayAntonym}>
+      <h1 className={showHelpModal ? "title-fade": "title"}>Synonym</h1>
+      <div className={showHelpModal ? "home-container-fade": "home-container"}>
+          <div className={showHelpModal ? "home-ant-container-fade": "home-ant-container"} onClick={handlePlayAntonym}>
             <h2>antonym</h2>
             <p className="ant-play-button">>></p>
           </div>
-          <div className="home-syn-container" onClick={handlePlaySynonym}>
+          <div className={showHelpModal ? "home-syn-container-fade": "home-syn-container"} onClick={handlePlaySynonym}>
             <h2>synonym</h2>
             <p className="syn-play-button">>></p>
           </div>

@@ -35,6 +35,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [games, setGames] = useState([]);
 
+  const [showModal, setShowModal] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   //autologin
@@ -66,12 +67,14 @@ function App() {
 
   return (
     <div className="app">
+      <div className={showHelpModal ? "background-fade" : "no-background-fade"}>
       <Router>
         <Header
           currentUser={currentUser}
           resetCurrentUser={setCurrentUser}
           showHelpModal={showHelpModal}
           setShowHelpModal={setShowHelpModal}
+          showModal={showModal}
         />
         <HelpModal
           showHelpModal={showHelpModal}
@@ -85,11 +88,11 @@ function App() {
             <Signup setCurrentUser={setCurrentUser} />
           </Route>
           <Route exact path="/">
-            <HomeContainer currentUser={currentUser} games={games} />
-            <Leaderboard games={games} currentUser={currentUser} />
+            <HomeContainer currentUser={currentUser} games={games} showHelpModal={showHelpModal}/>
+            <Leaderboard games={games} currentUser={currentUser} showHelpModal={showHelpModal}/>
           </Route>
           <Route path="/play">
-            <GameContainer currentUser={currentUser} />
+            <GameContainer currentUser={currentUser} showModal={showModal} setShowModal={setShowModal} showHelpModal={showHelpModal}/>
           </Route>
           <Route path="/playantonym">
             <AntonymGameContainer currentUser={currentUser} />
@@ -101,6 +104,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
+      </div>
     </div>
   );
 }

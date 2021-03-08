@@ -1,8 +1,8 @@
-function Leaderboard({ games, currentUser }) {
+function Leaderboard({ games, currentUser, showHelpModal }) {
 
     const gamesList = games.slice(0, 10).map(game => {
         return (
-            <li className="high-score-li">
+            <li className={showHelpModal ? "high-score-li-fade" : "high-score-li"}>
                 <div>{game.game_user}</div>
                 <div>{game.score}</div>
             </li>
@@ -10,9 +10,9 @@ function Leaderboard({ games, currentUser }) {
     });
 
     return (
-      <div className="leaderboard">
+      <div className={showHelpModal ? "leaderboard-fade" : "leaderboard"}>
           <h1>Leaderboard</h1>
-          <ul className="leaderboard-ul">{gamesList}</ul>
+          <ul className={showHelpModal ? "leaderboard-ul-fade" : "leaderboard-ul"}>{gamesList}</ul>
       </div>
     );
   }

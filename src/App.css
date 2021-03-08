@@ -39,15 +39,21 @@
 
 .app {
   text-align: center;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   background-color: #ffeadb;
 }
+
+/* .background-fade {
+  background-color: RGBA(103,138,116,0.5);
+} */
 
 body {
   background-color: #ffeadb;
 }
 
-button, .login-btn, .signup-btn {
+button,
+.login-btn,
+.signup-btn {
   border-radius: 30px;
   border: no-border;
   background-color: #ffeadb;
@@ -59,7 +65,6 @@ button, .login-btn, .signup-btn {
   font-family: inherit;
 }
 
-
 /* ------ Homepage ------ */
 
 .title {
@@ -69,6 +74,15 @@ button, .login-btn, .signup-btn {
   color: #ffeadb;
   font-size: 45px;
   text-shadow: 2px 2px black;
+}
+
+.title-fade {
+  background-color: RGBA(103,138,116,0.5);
+  margin: 0px;
+  padding: 25px;
+  color: #ffeadb;
+  font-size: 45px;
+  text-shadow: 2px 2px RGBA(0,0,0,0.3);
 }
 
 .home-container {
@@ -83,6 +97,21 @@ button, .login-btn, .signup-btn {
   text-align: center;
 }
 
+.home-container-fade {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 25px;
+  flex-wrap: no-wrap;
+  align-content: space-around;
+  text-align: center;
+  background-color: RGBA(103,138,116,0.5);
+  color: RGBA(0,0,0,0.3);
+
+  /* box-shadow: 5px 8px RGBA(247,197,168,0.5); */
+}
+
 .home-ant-container {
   background-color: white;
   height: 350px;
@@ -93,7 +122,16 @@ button, .login-btn, .signup-btn {
 }
 
 .home-ant-container:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.home-ant-container-fade {
+  background-color: white;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px RGBA(247,197,168,0.5);
 }
 
 /* .home-ant-container:hover {
@@ -112,7 +150,18 @@ button, .login-btn, .signup-btn {
 }
 
 .home-syn-container:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.home-syn-container-fade {
+  background-color: white;
+  height: 420px;
+  width: 320px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px RGBA(247,197,168,0.5);
 }
 
 .user-scores {
@@ -149,7 +198,13 @@ button, .login-btn, .signup-btn {
 /* ------ Synonym Game Play Page ------ */
 
 .outer-game-container {
-  background-color:#678a74;
+  background-color: #678a74;
+  padding: 70px;
+}
+
+.outer-game-container-fade {
+  background-color: RGBA(103,138,116,0.5);
+  color: RGBA(0,0,0,0.5);
   padding: 70px;
 }
 
@@ -175,7 +230,6 @@ button, .login-btn, .signup-btn {
   border-style: solid;
   border-width: 1px;
   border-color: gray;
-
 }
 
 .info-bar {
@@ -186,7 +240,7 @@ button, .login-btn, .signup-btn {
   justify-content: center;
   column-gap: 60px;
   /* flex-wrap: wrap; */
-  background-color:white;
+  background-color: white;
   align-content: space-around;
   text-align: center;
 
@@ -197,7 +251,7 @@ button, .login-btn, .signup-btn {
   margin-top: 30px;
 }
 
-.headword-and-guess-div{
+.headword-and-guess-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -292,26 +346,33 @@ button, .login-btn, .signup-btn {
 }
 
 .unfound-word-div {
- color: red;
- margin: 6px;
+  color: red;
+  margin: 6px;
 }
 
 /* ------ Modals ------ */
 
+.modal-wrapper {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
 .end-round-modal {
-  position:fixed;
-    background: white;
-    width: 30%;
-    height: 30%;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    box-shadow: 5px 8px #f7c5a8;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: gray;
+  position: fixed;
+  background: white;
+  color: black;
+  width: 30%;
+  height: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: gray;
 }
 
 .end-round-message {
@@ -319,23 +380,24 @@ button, .login-btn, .signup-btn {
 }
 
 .wrong-guess-modal {
-  color:red;
+  color: red;
 }
 
 .help-modal {
-  position:fixed;
-    background: white;
-    width: 30%;
-    height: 30%;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    box-shadow: 5px 8px #f7c5a8;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: gray;
+  opacity: 1;
+  position: fixed;
+  background: white;
+  width: 30%;
+  height: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  box-shadow: 5px 8px #f7c5a8;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
 }
 
 /* ------ Nav Bar ------ */
@@ -366,6 +428,20 @@ button, .login-btn, .signup-btn {
   background-color: #f7c5a8;
 }
 
+.nav-bar-fade {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  /* float: left; */
+  height: 70px;
+  /* border-style: solid;
+  border-width: 2px;
+  border-color: gray; */
+  background-color: RGBA(247,197,168,0.5);
+  color: RGBA(0,0,0,0.3);
+}
+
 .nav-heading-name {
   display: block;
   text-align: center;
@@ -389,6 +465,15 @@ button, .login-btn, .signup-btn {
   text-shadow: 2px 2px #ffeadb;
 }
 
+.nav-link-fade {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 35px;
+  text-shadow: 2px 2px #ffeadb;
+}
+
 .nav-link:link {
   color: black;
 }
@@ -401,8 +486,59 @@ button, .login-btn, .signup-btn {
   color: #ffeadb;
 }
 
+.nav-link-fade:link {
+  color: RGBA(0,0,0,0.3);
+}
+.nav-link-fade:visited {
+  color: RGBA(0,0,0,0.3);
+}
+
+.nav-link-fade:hover {
+  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  color: #ffeadb;
+}
+
 .logged-in-as {
   float: left;
+  padding: 10px;
+  margin-top: 34px;
+}
+
+.circle {
+
+    /* background: #f7c5a8;
+    border-radius: 50%; */
+    width: 53px;
+    height: 53px;
+    text-align: center;
+    /* border: solid;
+    border-width: 1px; */
+    /* border-color: gray;
+    box-shadow: 1px 1px #678a74; */
+}
+
+.circle:hover {
+  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  color: #ffeadb;
+}
+
+.profile {
+  padding-top: 5px;
+  opacity: 0.8;
+}
+
+.profile-fade {
+  padding-top: 5px;
+  opacity: 0.5;
+}
+
+.user-initial {
+  font-size: 40px;
+}
+
+.profile-pic {
+  height: 40px;
+  border-radius: 50%;
 }
 
 /* ------ Leaderboard ------ */
@@ -414,6 +550,14 @@ button, .login-btn, .signup-btn {
   background-color: #ffeadb;
 }
 
+.leaderboard-fade {
+  margin: auto;
+  width: 40%;
+  text-align: center;
+  background-color: RGBA(255,234,219,0.5);
+  color: RGBA(0,0,0,0.3);
+}
+
 .leaderboard-ul {
   list-style-type: none;
   margin: 0;
@@ -422,11 +566,26 @@ button, .login-btn, .signup-btn {
   background-color: #ffeadb;
 }
 
+.leaderboard-ul-fade {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: RGBA(255,234,219,0.5);
+}
+
 .high-score-li {
   float: left;
   width: 10%;
   text-align: center;
   background-color: #ffeadb;
+}
+
+.high-score-li-fade {
+  float: left;
+  width: 10%;
+  text-align: center;
+  background-color: RGBA(255,234,219,0.5);
 }
 
 /* ------ Footer ------ */
@@ -443,7 +602,8 @@ button, .login-btn, .signup-btn {
 
 /* ------ Login and Signup ------ */
 
-.username-div, .password-div {
+.username-div,
+.password-div {
   padding: 5px;
 }
 
