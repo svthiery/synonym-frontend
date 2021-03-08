@@ -244,7 +244,7 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
         console.log(currentGuess)
         setShowWrongGuessModal(true)
         playWrongSound()
-        setTimeout(function(){ setShowWrongGuessModal(false)}, 1600);
+        setTimeout(function(){ setShowWrongGuessModal(false)}, 1500);
     }
   }
 
@@ -319,6 +319,8 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
                 checkForMatches={checkForMatches}
                 guessAlert={guessAlert}
                 guessFormDisabled={guessFormDisabled}
+                showModal={showModal}
+                showHelpModal={showHelpModal}
             /> : <div></div>}
         </div>
         {currentGame ? <Anagrams synonyms={currentSynonyms} anagrams={currentAnagrams} showModal={showModal}/> : <div></div>}

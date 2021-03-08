@@ -65,6 +65,20 @@ button,
   font-family: inherit;
 }
 
+.button-fade,
+.login-btn-fade,
+.signup-btn-fade {
+  border-radius: 30px;
+  border: no-border;
+  background-color: RGBA(255,234,219,0.5);
+  font-size: 15px;
+  padding: 12px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin: 5px;
+  font-family: inherit;
+}
+
 /* ------ Homepage ------ */
 
 .title {
@@ -406,6 +420,10 @@ button,
   border-bottom: 2px solid gray;
 }
 
+.header-fade {
+  border-bottom: 2px solid RGBA(128,128,128,0.5);
+}
+
 .header-name {
   text-align: left;
   padding-left: 15px;
@@ -597,6 +615,7 @@ button,
   float: left;
   margin-top: 150px;
   padding: 10px;
+  padding-top: 50px;
   color: gray;
 }
 

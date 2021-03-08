@@ -25,7 +25,7 @@ function Header({
 
   return (
     <div>
-      <div className="header">
+      <div className={showHelpModal || showModal ? "header-fade" : "header"}>
         {/* <h1 className="header-name">Synonym</h1> */}
         <ul className={showHelpModal || showModal ? "nav-bar-fade" : "nav-bar"}>
           {/* <li className="nav-li"><h1 className="nav-heading-name">Synonym</h1></li> */}

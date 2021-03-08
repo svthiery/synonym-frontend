@@ -8,6 +8,8 @@ function GuessForm({
   checkForMatches,
   guessAlert,
   guessFormDisabled,
+  showModal,
+  showHelpModal
 }) {
   function handleChange(e) {
     let newGuess = e.target.value.toUpperCase();
@@ -68,8 +70,8 @@ function GuessForm({
             disabled={guessFormDisabled}
           />
           <br></br>
-          <input className="login-btn" type="submit" value="GUESS" />
-          <button onClick={fromMic}>🎤</button>
+          <input className={showModal || showHelpModal ? "login-btn-fade": "login-btn"} type="submit" value="GUESS" />
+          <button onClick={fromMic} className={showModal || showHelpModal ? "login-btn-fade": "login-btn"}>🎤</button>
         </form>
       </div>
       <div>{guessAlert}</div>
