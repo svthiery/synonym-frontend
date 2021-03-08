@@ -95,7 +95,7 @@ function App() {
             <GameContainer currentUser={currentUser} showModal={showModal} setShowModal={setShowModal} showHelpModal={showHelpModal}/>
           </Route>
           <Route path="/playantonym">
-            <AntonymGameContainer currentUser={currentUser} />
+            <AntonymGameContainer currentUser={currentUser} showHelpModal={showHelpModal}/>
           </Route>
           {/* <Route path="/scores">
             <Leaderboard games={games} currentUser={currentUser}/>

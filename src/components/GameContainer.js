@@ -65,7 +65,7 @@ function GameContainer({ currentUser, userGamesList, showModal, setShowModal, sh
     let i = 0;
     do {
         i += 1;
-        randWordId = Math.ceil(Math.random() * 7);
+        randWordId = Math.ceil(Math.random() * 8);
         console.log({randWordId, i})
     } while (checkWordIsNotRepeat(randWordId));
     // if (checkWordIsNotRepeat(randWordId)) {

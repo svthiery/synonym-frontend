@@ -8,10 +8,11 @@ import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal";
 import soundfile from "../assets/109662__grunz__success.mp3";
 import soundfiletwo from "../assets/109662__grunz__success.wav";
-import loseSound from "../assets/lose__trumpet-cry.wav";
 import correctSound from "../assets/correct-choice.wav";
+import gameOverSound from "../assets/game-over.mp3";
+import wrongSound from "../assets/wrong-buzz.wav";
 
-function AntonymGameContainer({ currentUser, userGamesList }) {
+function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
   const [gameScore, setGameScore] = useState(0);
@@ -63,21 +64,21 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
   function startNewRound(newGame) {
     // console.log(currentGame);
     let newGameId = newGame.id;
-    let randWordId = null;
+    let randAntId = null;
     let i = 0;
     do {
       i += 1;
-      randWordId = Math.ceil(Math.random() * 7);
-      console.log({ randWordId, i });
-    } while (checkIfWordIsRepeat(randWordId));
-    console.log(randWordId);
+      randAntId = Math.ceil(Math.random() * 7);
+      console.log({ randAntId, i });
+    } while (checkIfWordIsRepeat(randAntId));
+    console.log(randAntId);
     fetch("http://localhost:3001/rounds", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        word_id: randWordId,
+        antonym_id: randAntId,
         game_id: newGameId,
         score: 0,
       }),
@@ -85,22 +86,22 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
       .then((response) => response.json())
       .then((newRoundObj) => {
         // console.log("New Round Object", newRoundObj);
-        let usedWordId = randWordId;
-        setWordIdsUsed([...wordIdsUsed, usedWordId]);
+        let usedAntId = randAntId;
+        setWordIdsUsed([...wordIdsUsed, usedAntId]);
         console.log(wordIdsUsed);
-        getNewWord(randWordId);
+        getNewWord(randAntId);
         // let newRoundNum = currentRound + 1
         // setCurrentRound(newRoundNum)
       });
   }
 
-  function checkIfWordIsRepeat(randWordId) {
-    return wordIdsUsed.includes(randWordId);
+  function checkIfWordIsRepeat(randAntId) {
+    return wordIdsUsed.includes(randAntId);
   }
 
-  function checkIfWordIsMissingAntonyms(randWordId){
+  function checkIfWordIsMissingAntonyms(randAntId){
     let missingAnts = true
-    fetch(`http://localhost:3001/words/${randWordId}`)
+    fetch(`http://localhost:3001/antonyms/${randAntId}`)
       .then((response) => response.json())
       .then((word) => {
         if (word.antonyms) {
@@ -111,7 +112,7 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
   }
 
   function getNewWord(wordId) {
-    fetch(`http://localhost:3001/words/${wordId}`)
+    fetch(`http://localhost:3001/antonyms/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         console.log(word);
@@ -131,7 +132,8 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
   }
 
   function createSynObjs(synsArray) {
-    const synsObjs = synsArray.map((syn) => {
+    const slicedSynsArray = synsArray.slice(0, 12)
+    const synsObjs = slicedSynsArray.map((syn) => {
       return {
         syn: syn.toUpperCase(),
         anagram: syn.toUpperCase(),
@@ -186,6 +188,9 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
   }
 
   function showEndRoundModal() {
+    if (foundSynonyms.length === 0) {
+      playGameOverSound()
+    }
     setShowModal(true);
   }
 
@@ -250,6 +255,7 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
     // }
     if (foundMatch === false && currentGuess) {
       console.log(currentGuess);
+      playWrongSound()
       setShowWrongGuessModal(true);
       setTimeout(function () {
         setShowWrongGuessModal(false);
@@ -277,12 +283,13 @@ function AntonymGameContainer({ currentUser, userGamesList }) {
 
   //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
 
-  const [playWinSound] = useSound(soundfiletwo);
-  const [playLoseSound] = useSound(loseSound);
-  const [playCorrectSound] = useSound(correctSound);
+  const [playWinSound] = useSound(soundfiletwo, {volume: 0.15 });
+  const [playWrongSound] = useSound(wrongSound, {volume: 0.15 })
+  const [playCorrectSound] = useSound(correctSound, {volume: 0.15 });
+  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.15})
 
   return (
-    <div className="outer-game-container">
+    <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>
       <div className="game-container">
         <InfoBar
           seconds={seconds}
