@@ -43,10 +43,6 @@
   background-color: #ffeadb;
 }
 
-/* .background-fade {
-  background-color: RGBA(103,138,116,0.5);
-} */
-
 body {
   background-color: #ffeadb;
 }
@@ -122,8 +118,6 @@ button,
   text-align: center;
   background-color: RGBA(103,138,116,0.5);
   color: RGBA(0,0,0,0.3);
-
-  /* box-shadow: 5px 8px RGBA(247,197,168,0.5); */
 }
 
 .home-ant-container {
@@ -211,31 +205,44 @@ button,
 
 /* ------ Synonym Game Play Page ------ */
 
+.gamepage-title {
+  /* background-color: #678a74; */
+  margin: 0px;
+  padding: 25px;
+  color: #ffeadb;
+  font-size: 45px;
+  text-shadow: 2px 2px black;
+}
+
+.gamepage-title-fade {
+  /* background-color: RGBA(103,138,116,0.5); */
+  margin: 0px;
+  padding: 25px;
+  color: #ffeadb;
+  font-size: 45px;
+  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+}
+
 .outer-game-container {
   background-color: #678a74;
   padding: 70px;
+  padding-top: 40px;
 }
 
 .outer-game-container-fade {
   background-color: RGBA(103,138,116,0.5);
   color: RGBA(0,0,0,0.5);
   padding: 70px;
+  padding-top: 40px;
 }
 
 .game-container {
   display: flex;
-  /* grid-template-areas:
-      "info-bar info-bar"
-      "headword headword"
-      "guess guess"
-      "anagrams found-words";
-  grid-template-columns: 2fr 2fr; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: 25px;
   flex-wrap: wrap;
-  /* background-color: #678a74; */
   align-content: space-around;
   text-align: center;
   background-color: white;
@@ -247,13 +254,11 @@ button,
 }
 
 .info-bar {
-  /* grid-area: info-bar; */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: 60px;
-  /* flex-wrap: wrap; */
   background-color: white;
   align-content: space-around;
   text-align: center;
@@ -261,7 +266,6 @@ button,
   height: 100px;
   width: 100%;
   border-radius: 10px;
-  /* box-shadow: 5px 8px #f7c5a8; */
   margin-top: 30px;
 }
 
@@ -274,13 +278,11 @@ button,
 }
 
 .headword-div {
-  /* grid-area: headword; */
   background-color: white;
   height: 150px;
   width: 100%;
   border-radius: 10px;
   text-align: center;
-  /* box-shadow: 5px 8px #f7c5a8; */
   margin: 25px;
   margin-bottom: 10px;
   margin-top: 0px;
@@ -296,8 +298,6 @@ button,
   width: 100%;
   border-radius: 10px;
   text-align: center;
-  /* box-shadow: 5px 8px #f7c5a8; */
-  /* margin: 25px; */
   font-family: inherit;
   outline: none;
 }
@@ -412,6 +412,10 @@ button,
   border-style: solid;
   border-width: 1px;
   border-color: gray;
+}
+
+.inner-help-modal {
+  padding: 15px;
 }
 
 /* ------ Nav Bar ------ */

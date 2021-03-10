@@ -290,6 +290,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   return (
     <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>
+      <h1 className={showHelpModal || showModal ? "gamepage-title-fade": "gamepage-title"}>Antonym</h1>
       <div className="game-container">
         <InfoBar
           seconds={seconds}
