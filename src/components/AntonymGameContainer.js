@@ -273,6 +273,9 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       // playWinSound()
       // let bonusScore = roundScore + 500
       // setRoundScore(bonusScore)
+      // setCurrentRound((prevRoundValue) => prevRoundValue + 1)
+      setRoundScore((prevRoundScore) => prevRoundScore + 500)
+      setGameScore((prevGameScore) => prevGameScore + 500)
       stopTimer();
       showEndRoundModal();
       playWinSound();
@@ -283,10 +286,10 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
 
-  const [playWinSound] = useSound(soundfiletwo, {volume: 0.15 });
-  const [playWrongSound] = useSound(wrongSound, {volume: 0.15 })
-  const [playCorrectSound] = useSound(correctSound, {volume: 0.15 });
-  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.15})
+  const [playWinSound] = useSound(soundfiletwo, {volume: 0.25 });
+  const [playWrongSound] = useSound(wrongSound, {volume: 0.25 })
+  const [playCorrectSound] = useSound(correctSound, {volume: 0.25 });
+  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.25})
 
   return (
     <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>

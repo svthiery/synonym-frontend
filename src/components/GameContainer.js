@@ -193,7 +193,8 @@ function GameContainer({
 
   function endRound() {
     let newGameScore = gameScore + roundScore;
-    setGameScore(newGameScore);
+    setGameScore((prevGameScore) => prevGameScore + roundScore)
+    // setGameScore(newGameScore);
     setGuessFormDisabled(true);
     showEndRoundModal();
     saveFinalScore();
@@ -270,6 +271,8 @@ function GameContainer({
       // playWinSound()
       // let bonusScore = roundScore + 500
       // setRoundScore(bonusScore)
+      setRoundScore((prevRoundScore) => prevRoundScore + 500)
+      setGameScore((prevGameScore) => prevGameScore + 500)
       stopTimer();
       showEndRoundModal();
       playWinSound();
@@ -278,10 +281,10 @@ function GameContainer({
 
   ////Sound Effects
 
-  const [playWinSound] = useSound(soundfiletwo, { volume: 0.15 });
-  const [playWrongSound] = useSound(wrongSound, { volume: 0.15 });
-  const [playCorrectSound] = useSound(correctSound, { volume: 0.15 });
-  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.15 });
+  const [playWinSound] = useSound(soundfiletwo, { volume: 0.25 });
+  const [playWrongSound] = useSound(wrongSound, { volume: 0.25 });
+  const [playCorrectSound] = useSound(correctSound, { volume: 0.25 });
+  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.25 });
 
   return (
     <div
@@ -291,7 +294,7 @@ function GameContainer({
           : "outer-game-container"
       }
     >
-      <h1 className={showHelpModal || showModal ? "gamepage-title-fade" : "gamepage-title"}>Synonym</h1>
+      {/* <h1 className={showHelpModal || showModal ? "gamepage-title-fade" : "gamepage-title"}>Synonym</h1> */}
       <div className="game-container">
         <InfoBar
           seconds={seconds}

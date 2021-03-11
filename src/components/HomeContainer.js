@@ -27,11 +27,11 @@ function HomeContainer({ games, currentUser, showHelpModal }) {
       <h1 className={showHelpModal ? "title-fade": "title"}>Synonym</h1>
       <div className={showHelpModal ? "home-container-fade": "home-container"}>
           <div className={showHelpModal ? "home-ant-container-fade": "home-ant-container"} onClick={handlePlayAntonym}>
-            <h2>antonym</h2>
+            <h2>Antonym</h2>
             <p className="ant-play-button">>></p>
           </div>
           <div className={showHelpModal ? "home-syn-container-fade": "home-syn-container"} onClick={handlePlaySynonym}>
-            <h2>synonym</h2>
+            <h2>Synonym</h2>
             <p className="syn-play-button">>></p>
           </div>
           { currentUser ? <UserScores games={games} currentUser={currentUser} /> : <div></div>}
