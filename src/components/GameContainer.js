@@ -74,7 +74,7 @@ function GameContainer({
     let i = 0;
     do {
       i += 1;
-      randWordId = Math.ceil(Math.random() * 8);
+      randWordId = Math.ceil(Math.random() * 7);
       console.log({ randWordId, i });
     } while (checkWordIsNotRepeat(randWordId));
     // if (checkWordIsNotRepeat(randWordId)) {
@@ -129,7 +129,8 @@ function GameContainer({
   }
 
   function createSynObjs(synsArray) {
-    const synsObjs = synsArray.map((syn) => {
+    const slicedSynsArray = synsArray.slice(0, 12)
+    const synsObjs = slicedSynsArray.map((syn) => {
       return {
         syn: syn.toUpperCase(),
         anagram: syn.toUpperCase(),
