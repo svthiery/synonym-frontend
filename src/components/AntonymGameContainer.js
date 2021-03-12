@@ -40,7 +40,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     setCurrentRound(0);
     console.log(wordIdsUsed);
     // Create new game
-    fetch("http://localhost:3001/games", {
+    fetch(`${REACT_APP_RAILS_URL}/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       console.log({ randAntId, i });
     } while (checkIfWordIsRepeat(randAntId));
     console.log(randAntId);
-    fetch("http://localhost:3001/rounds", {
+    fetch(`${REACT_APP_RAILS_URL}/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +101,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function checkIfWordIsMissingAntonyms(randAntId){
     let missingAnts = true
-    fetch(`http://localhost:3001/antonyms/${randAntId}`)
+    fetch(`${REACT_APP_RAILS_URL}/antonyms/${randAntId}`)
       .then((response) => response.json())
       .then((word) => {
         if (word.antonyms) {
@@ -112,7 +112,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   }
 
   function getNewWord(wordId) {
-    fetch(`http://localhost:3001/antonyms/${wordId}`)
+    fetch(`${REACT_APP_RAILS_URL}/antonyms/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         console.log(word);
@@ -207,7 +207,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function saveFinalScore() {
     console.log(gameScore);
-    fetch(`http://localhost:3001/games/${currentGame.id}`, {
+    fetch(`${REACT_APP_RAILS_URL}/games/${currentGame.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

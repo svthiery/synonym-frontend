@@ -46,7 +46,7 @@ function GameContainer({
     setCurrentRound(0);
     console.log(wordIdsUsed);
     // Create new game
-    fetch("http://localhost:3001/games", {
+    fetch(`${REACT_APP_RAILS_URL}/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function GameContainer({
     //     randWordId = Math.ceil(Math.random() * 7);
     // }
     console.log(randWordId);
-    fetch("http://localhost:3001/rounds", {
+    fetch(`${REACT_APP_RAILS_URL}/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ function GameContainer({
   }
 
   function getNewWord(wordId) {
-    fetch(`http://localhost:3001/words/${wordId}`)
+    fetch(`${REACT_APP_RAILS_URL}/words/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         // console.log(word);
@@ -206,7 +206,7 @@ function GameContainer({
 
   function saveFinalScore() {
     console.log(gameScore);
-    fetch(`http://localhost:3001/games/${currentGame.id}`, {
+    fetch(`${REACT_APP_RAILS_URL}/games/${currentGame.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

@@ -20,7 +20,7 @@ function Signup({ setCurrentUser }) {
     e.preventDefault();
     // TODO: login the user
     // POST /login
-    fetch("http://localhost:3001/signup", {
+    fetch(`${REACT_APP_RAILS_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

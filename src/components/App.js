@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-    fetch("http://localhost:3001/me", {
+    fetch(`${REACT_APP_RAILS_URL}/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch("http://localhost:3001/games")
+    fetch(`${REACT_APP_RAILS_URL}/games`)
       .then((response) => response.json())
       .then((gamesArr) => {
         gamesArr.sort((a, b) => b.score - a.score);
