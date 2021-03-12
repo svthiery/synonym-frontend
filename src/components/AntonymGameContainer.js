@@ -72,7 +72,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       console.log({ randAntId, i });
     } while (checkIfWordIsRepeat(randAntId));
     console.log(randAntId);
-    fetch(`${REACT_APP_RAILS_URL}/rounds`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
