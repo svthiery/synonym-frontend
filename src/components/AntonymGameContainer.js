@@ -40,7 +40,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     setCurrentRound(0);
     console.log(wordIdsUsed);
     // Create new game
-    fetch(`${REACT_APP_RAILS_URL}/games`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +101,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function checkIfWordIsMissingAntonyms(randAntId){
     let missingAnts = true
-    fetch(`${REACT_APP_RAILS_URL}/antonyms/${randAntId}`)
+    fetch(`https://evening-dusk-01854.herokuapp.com/antonyms/${randAntId}`)
       .then((response) => response.json())
       .then((word) => {
         if (word.antonyms) {
@@ -112,7 +112,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   }
 
   function getNewWord(wordId) {
-    fetch(`${REACT_APP_RAILS_URL}/antonyms/${wordId}`)
+    fetch(`https://evening-dusk-01854.herokuapp.com/antonyms/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         console.log(word);
@@ -207,7 +207,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function saveFinalScore() {
     console.log(gameScore);
-    fetch(`${REACT_APP_RAILS_URL}/games/${currentGame.id}`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

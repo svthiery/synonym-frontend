@@ -46,7 +46,7 @@ function GameContainer({
     setCurrentRound(0);
     console.log(wordIdsUsed);
     // Create new game
-    fetch(`${REACT_APP_RAILS_URL}/games`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function GameContainer({
     //     randWordId = Math.ceil(Math.random() * 7);
     // }
     console.log(randWordId);
-    fetch(`${REACT_APP_RAILS_URL}/rounds`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ function GameContainer({
   }
 
   function getNewWord(wordId) {
-    fetch(`${REACT_APP_RAILS_URL}/words/${wordId}`)
+    fetch(`https://evening-dusk-01854.herokuapp.com/words/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
         // console.log(word);
@@ -206,7 +206,7 @@ function GameContainer({
 
   function saveFinalScore() {
     console.log(gameScore);
-    fetch(`${REACT_APP_RAILS_URL}/games/${currentGame.id}`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

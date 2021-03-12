@@ -20,7 +20,7 @@ function Signup({ setCurrentUser }) {
     e.preventDefault();
     // TODO: login the user
     // POST /login
-    fetch(`${REACT_APP_RAILS_URL}/signup`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

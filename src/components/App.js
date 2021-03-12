@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-    fetch(`${REACT_APP_RAILS_URL}/me`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch(`${REACT_APP_RAILS_URL}/games`)
+    fetch(`https://evening-dusk-01854.herokuapp.com/games`)
       .then((response) => response.json())
       .then((gamesArr) => {
         gamesArr.sort((a, b) => b.score - a.score);
