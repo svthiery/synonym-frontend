@@ -68,7 +68,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     let i = 0;
     do {
       i += 1;
-      randAntId = Math.ceil(Math.random() * 7);
+      randAntId = Math.ceil(Math.random() * 83);
       console.log({ randAntId, i });
     } while (checkIfWordIsRepeat(randAntId));
     console.log(randAntId);

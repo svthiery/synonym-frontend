@@ -74,7 +74,7 @@ function GameContainer({
     let i = 0;
     do {
       i += 1;
-      randWordId = Math.ceil(Math.random() * 7);
+      randWordId = Math.ceil(Math.random() * 179);
       console.log({ randWordId, i });
     } while (checkWordIsNotRepeat(randWordId));
     // if (checkWordIsNotRepeat(randWordId)) {
