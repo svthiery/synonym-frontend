@@ -78,7 +78,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        antonym_id: randAntId,
+        word_id: randAntId,
         game_id: newGameId,
         score: 0,     
       }),

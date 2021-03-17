@@ -68,7 +68,8 @@ function GameContainer({
   }
 
   function startNewRound(newGame) {
-    // console.log(currentGame);
+    console.log(currentGame);
+    console.log(newGame)
     let newGameId = newGame.id;
     let randWordId = null;
     let i = 0;
@@ -81,7 +82,8 @@ function GameContainer({
     //     randWordId = Math.ceil(Math.random() * 7);
     // }
     console.log(randWordId);
-    fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
+    // fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
+      fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
