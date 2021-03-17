@@ -94,7 +94,7 @@ function GameContainer({
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
-        // console.log("New Round Object", newRoundObj);
+        console.log("New Round Object", newRoundObj);
         let usedWordId = randWordId;
         setWordIdsUsed([...wordIdsUsed, usedWordId]);
         console.log(wordIdsUsed);

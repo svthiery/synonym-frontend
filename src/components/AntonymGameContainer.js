@@ -80,13 +80,13 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       body: JSON.stringify({
         antonym_id: randAntId,
         game_id: newGameId,
-        score: 0,
+        score: 0,     
       }),
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
-        // console.log("New Round Object", newRoundObj);
-        let usedAntId = randAntId;
+        console.log("New Round Object", newRoundObj);
+        let usedAntId = randAntId;  
         setWordIdsUsed([...wordIdsUsed, usedAntId]);
         console.log(wordIdsUsed);
         getNewWord(randAntId);
