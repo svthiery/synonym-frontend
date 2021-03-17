@@ -38,6 +38,8 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false);
 
+  const [gameScore, setGameScore] = useState(0);
+
   //autologin
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -63,7 +65,7 @@ function App() {
         console.log(gamesArr);
         setGames(gamesArr);
       });
-  }, []);
+  }, [gameScore]);
 
   return (
     <div className="app">
@@ -92,7 +94,7 @@ function App() {
             <Leaderboard games={games} currentUser={currentUser} showHelpModal={showHelpModal}/>
           </Route>
           <Route path="/play">
-            <GameContainer currentUser={currentUser} showModal={showModal} setShowModal={setShowModal} showHelpModal={showHelpModal}/>
+            <GameContainer currentUser={currentUser} showModal={showModal} setShowModal={setShowModal} showHelpModal={showHelpModal} gameScore={gameScore} setGameScore={setGameScore}/>
           </Route>
           <Route path="/playantonym">
             <AntonymGameContainer currentUser={currentUser} showHelpModal={showHelpModal}/>

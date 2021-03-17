@@ -18,10 +18,11 @@ function GameContainer({
   showModal,
   setShowModal,
   showHelpModal,
+  gameScore,
+  setGameScore
 }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
-  const [gameScore, setGameScore] = useState(0);
   const [currentHeadword, setCurrentHeadword] = useState(null);
   const [currentPartOfSpeech, setCurrentPartOfSpeech] = useState(null);
   const [currentSynonyms, setCurrentSynonyms] = useState([]);
@@ -82,8 +83,8 @@ function GameContainer({
     //     randWordId = Math.ceil(Math.random() * 7);
     // }
     console.log(randWordId);
-    // fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
-      fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
+    fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
+      // fetch(`http://localhost:3001/rounds`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
