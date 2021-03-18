@@ -33,7 +33,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   const [showWrongGuessModal, setShowWrongGuessModal] = useState(false);
 
   //Timer State
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(45);
   const [timerIsActive, setTimerIsActive] = useState(false);
 
   function handleNewGameClick() {
@@ -183,7 +183,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   }
 
   function resetTimer() {
-    setSeconds(30);
+    setSeconds(45);
     setTimerIsActive(false);
   }
 
