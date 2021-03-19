@@ -22,15 +22,15 @@ On the homepage, a logged-in user can see their own high scores and a leaderboar
 
 ![Homepage](https://user-images.githubusercontent.com/70274658/111839957-0565cf00-88d2-11eb-9ef3-80e0bddb828c.gif)
 
-On the game play page, a user will be presented with a keyword and a list of anagrams (scrambled versions) of the synonyms of that word. The user types guesses into the guess form. Correct guesses will appear in green in the "Found Words" section. 
+On the game play page, a user will be presented with a keyword and a list of anagrams (scrambled versions) of the synonyms of that word. The user types guesses into the guess form. Correct guesses will appear in green text in the "Found Words" section, and each correct guess will trigger a positive audio sound effect.
 
 ![Guess_one_word](https://user-images.githubusercontent.com/70274658/111840232-74dbbe80-88d2-11eb-9aad-8af633888a64.gif)
 
-If a user guesses an incorrect word, they will hear a "wrong answer" beep, and see the text "Not a valid word" in red.
+If a user guesses an incorrect word, they will hear a negative audio sound effect, and see the text "Not a valid word" in red.
 
 ![Wrong_guess](https://user-images.githubusercontent.com/70274658/111840312-9472e700-88d2-11eb-8306-650dc0601edf.gif)
 
-A user can make guesses verbally by clicking on the microphone button. The app will convert the user's verbal guess to text in the guess form.
+A user can make guesses verbally by clicking on the microphone button. The app will convert the user's verbal guess to text in the guess form, and automatically submit the guess.
 
 ![Microphone_guess](https://user-images.githubusercontent.com/70274658/111840414-bf5d3b00-88d2-11eb-835e-8849caf4002b.gif)
 
