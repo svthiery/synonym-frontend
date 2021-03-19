@@ -10,19 +10,18 @@ Synonym uses the following technologies:
 
 ### Frontend
 
-React
-React Router
-JWT Authentication
-Microsoft Azure Speech-to-Text API
-Custom CSS
+● React
+● React Router
+● JWT Authentication
+● Microsoft Azure Speech-to-Text API
+● Custom CSS
 
 ### Backend
 
-Ruby
-Rails
-PostgreSQL
-JWT Authentication
-Microsoft Azure Speech-to-Text API
+● Ruby
+● Rails
+● PostgreSQL
+● JWT Authentication
 
 
 
