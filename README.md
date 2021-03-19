@@ -38,7 +38,7 @@ If a user guesses all synonyms in a round, they receive a 500-point bonus, and t
 
 ![Guess_all_words](https://user-images.githubusercontent.com/70274658/111840479-d308a180-88d2-11eb-9a28-db20f3da8758.gif)
 
-The round will automatically end if the timer runs out.
+The round will automatically end if the timer runs out. Any unguessed words will be shown in red text.
 
 ![End_round_modal](https://user-images.githubusercontent.com/70274658/111840510-e287ea80-88d2-11eb-82ef-a04b0abe2f16.gif)
 
