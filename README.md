@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Synonym
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Synonym is a timed word game in which users guess possible synonyms of a given keyword. 
 
-## Available Scripts
+Play online at https://synonym.netlify.app/
 
-In the project directory, you can run:
+## Technologies
 
-### `yarn start`
+Synonym uses the following technologies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React, React Router, JWT Authentication, Microsoft Azure Speech-to-Text API, Custom CSS
 
-### `yarn test`
+### Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ruby, Rails, PostgreSQL, JWT Authentication
 
-### `yarn build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On the homepage, a logged-in user can see their own high scores and a leaderboard with the high scores of all users. They can click to play either Synonym or Antonym.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Homepage](https://user-images.githubusercontent.com/70274658/111839957-0565cf00-88d2-11eb-9ef3-80e0bddb828c.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+On the game play page, a user will be presented with a keyword and a list of anagrams (scrambled versions) of the synonyms of that word. The user types guesses into the guess form. Correct guesses will appear in green text in the "Found Words" section, and each correct guess will trigger a positive audio sound effect.
 
-### `yarn eject`
+![Guess_one_word](https://user-images.githubusercontent.com/70274658/111840232-74dbbe80-88d2-11eb-9aad-8af633888a64.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If a user guesses an incorrect word, they will hear a negative audio sound effect, and see the text "Not a valid word" in red.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Wrong_guess](https://user-images.githubusercontent.com/70274658/111840312-9472e700-88d2-11eb-8306-650dc0601edf.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A user can make guesses verbally by clicking on the microphone button. The app will convert the user's verbal guess to text in the guess form, and automatically submit the guess.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Microphone_guess](https://user-images.githubusercontent.com/70274658/111840414-bf5d3b00-88d2-11eb-835e-8849caf4002b.gif)
 
-## Learn More
+If a user guesses all synonyms in a round, they receive a 500-point bonus, and the round ends.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Guess_all_words](https://user-images.githubusercontent.com/70274658/111840479-d308a180-88d2-11eb-9a28-db20f3da8758.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The round will automatically end if the timer runs out. Any unguessed words will be shown in red text.
 
-### Code Splitting
+![End_round_modal](https://user-images.githubusercontent.com/70274658/111840510-e287ea80-88d2-11eb-82ef-a04b0abe2f16.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If a user fails to guess at least two synonyms in a single round, they will see a "Game Over" modal pop-up.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Game_over](https://user-images.githubusercontent.com/70274658/111840569-fe8b8c00-88d2-11eb-82a7-58d4319419f1.gif)
