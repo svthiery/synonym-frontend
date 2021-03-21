@@ -1,19 +1,11 @@
 function UserScores({ currentUser, games }) {
+  const userGamesList = games.slice(0, 10).filter((game) => {
+    return game.user_id === currentUser.id;
+  });
 
-//   if (currentUser) {
-
-    const userGamesList = games.slice(0, 10).filter((game) => {
-        return game.user_id === currentUser.id;
-      });
-
-    const userGamesListShort = userGamesList.map(game => {
-        return (
-            <div className="indv-user-score">
-                {game.score}
-            </div>
-        )
-    })
-//   }
+  const userGamesListShort = userGamesList.map((game) => {
+    return <div className="indv-user-score">{game.score}</div>;
+  });
 
   return (
     <div className="user-scores">

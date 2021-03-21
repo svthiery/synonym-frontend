@@ -6,7 +6,6 @@ import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal";
-import soundfile from "../assets/109662__grunz__success.mp3";
 import soundfiletwo from "../assets/109662__grunz__success.wav";
 import wrongSound from "../assets/wrong-buzz.wav";
 import correctSound from "../assets/correct-choice.wav";
@@ -19,7 +18,7 @@ function GameContainer({
   setShowModal,
   showHelpModal,
   gameScore,
-  setGameScore
+  setGameScore,
 }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
@@ -46,7 +45,6 @@ function GameContainer({
   function handleNewGameClick() {
     setCurrentRound(0);
     console.log(wordIdsUsed);
-    // Create new game
     fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
       headers: {
@@ -70,7 +68,7 @@ function GameContainer({
 
   function startNewRound(newGame) {
     console.log(currentGame);
-    console.log(newGame)
+    console.log(newGame);
     let newGameId = newGame.id;
     let randWordId = null;
     let i = 0;
@@ -132,7 +130,7 @@ function GameContainer({
   }
 
   function createSynObjs(synsArray) {
-    const slicedSynsArray = synsArray.slice(0, 12)
+    const slicedSynsArray = synsArray.slice(0, 12);
     const synsObjs = slicedSynsArray.map((syn) => {
       return {
         syn: syn.toUpperCase(),
@@ -197,20 +195,16 @@ function GameContainer({
 
   function endRound() {
     let newGameScore = gameScore + roundScore;
-    setGameScore((prevGameScore) => prevGameScore + roundScore)
-    // setGameScore(newGameScore);
+    setGameScore((prevGameScore) => prevGameScore + roundScore);
     setGuessFormDisabled(true);
     showEndRoundModal();
     saveFinalScore();
-    //Initiate modal with round score, game score, words guessed, etc.
-    //Adds round score to game score
-    //create play button that starts a new round
   }
 
   function saveFinalScore() {
     console.log(gameScore);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
-      method: "PATCH", // or 'PUT'
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -245,16 +239,6 @@ function GameContainer({
         playCorrectSound();
       }
     });
-    // console.log(currentSynonyms.length, foundSynonyms.length)
-    // if (currentSynonyms.length === foundSynonyms.length) {
-    //     let won = "You guessed all the words!"
-    //     setGuessAlert(won)
-    // }
-    // console.log(currentAnagrams)
-    // if (currentAnagrams.length === 0) {
-    //     let won = "You guessed all the words!"
-    //     setGuessAlert(won)
-    // }
     if (foundMatch === false && currentGuess) {
       console.log(currentGuess);
       setShowWrongGuessModal(true);
@@ -270,20 +254,15 @@ function GameContainer({
       foundSynonyms.length === currentSynonyms.length &&
       foundSynonyms.length !== 0
     ) {
-      // let won = "You guessed all the words!"
-      // setGuessAlert(won)
-      // playWinSound()
-      // let bonusScore = roundScore + 500
-      // setRoundScore(bonusScore)
-      setRoundScore((prevRoundScore) => prevRoundScore + 500)
-      setGameScore((prevGameScore) => prevGameScore + 500)
+      setRoundScore((prevRoundScore) => prevRoundScore + 500);
+      setGameScore((prevGameScore) => prevGameScore + 500);
       stopTimer();
       showEndRoundModal();
       playWinSound();
     }
   }, [foundSynonyms]);
 
-  ////Sound Effects
+  ////----------------Sound Effects---------------------------------
 
   const [playWinSound] = useSound(soundfiletwo, { volume: 0.25 });
   const [playWrongSound] = useSound(wrongSound, { volume: 0.25 });

@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-function Timer({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTimer, stopTimer, resetTimer }) {
-
-    //-----Original timer function
-//   useEffect(() => {
-//     let interval = null;
-//     if (timerIsActive) {
-//       interval = setInterval(() => {
-//         setSeconds(seconds => seconds - 1);
-//       }, 1000);
-//     } else if (!timerIsActive && seconds !== 0) {
-//       clearInterval(interval);
-//     }
-//     return () => clearInterval(interval);
-//   }, [timerIsActive, seconds]);
-
+function Timer({
+  seconds,
+  setSeconds,
+  timerIsActive,
+  setTimerIsActive,
+  startTimer,
+  stopTimer,
+  resetTimer,
+}) {
   useEffect(() => {
     let interval = null;
     if (timerIsActive) {
       interval = setInterval(() => {
-        setSeconds(seconds => seconds - 1);
+        setSeconds((seconds) => seconds - 1);
       }, 1000);
       if (seconds === 0) {
-        stopTimer()
+        stopTimer();
       }
     } else if (!timerIsActive && seconds !== 0) {
       clearInterval(interval);
@@ -30,10 +24,9 @@ function Timer({ seconds, setSeconds, timerIsActive, setTimerIsActive, startTime
     return () => clearInterval(interval);
   }, [timerIsActive, seconds]);
 
-
   return (
     <div className="timer">
-        <h4>TIMER</h4>
+      <h4>TIMER</h4>
       <div className="time">{seconds} seconds</div>
       <div className="row">
         {/* <button

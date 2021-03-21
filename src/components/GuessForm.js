@@ -9,7 +9,7 @@ function GuessForm({
   guessAlert,
   guessFormDisabled,
   showModal,
-  showHelpModal
+  showHelpModal,
 }) {
   function handleChange(e) {
     let newGuess = e.target.value.toUpperCase();
@@ -49,7 +49,9 @@ function GuessForm({
         let textGuess = result.text.toUpperCase();
         let newGuess = textGuess.substring(0, textGuess.length - 1);
         setGuess(newGuess);
-        setTimeout(function(){ setGuess("")}, 1500)
+        setTimeout(function () {
+          setGuess("");
+        }, 1500);
         checkForMatches(newGuess);
       }
     });
@@ -70,8 +72,21 @@ function GuessForm({
             disabled={guessFormDisabled}
           />
           <br></br>
-          <input className={showModal || showHelpModal ? "login-btn-fade": "login-btn"} type="submit" value="GUESS" />
-          <button onClick={fromMic} className={showModal || showHelpModal ? "login-btn-fade": "login-btn"}>🎤</button>
+          <input
+            className={
+              showModal || showHelpModal ? "login-btn-fade" : "login-btn"
+            }
+            type="submit"
+            value="GUESS"
+          />
+          <button
+            onClick={fromMic}
+            className={
+              showModal || showHelpModal ? "login-btn-fade" : "login-btn"
+            }
+          >
+            🎤
+          </button>
         </form>
       </div>
       <div>{guessAlert}</div>

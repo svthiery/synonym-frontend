@@ -12,7 +12,7 @@ function EndRoundModal({
   userGamesList,
   setCurrentRound,
   currentRound,
-  setWordIdsUsed
+  setWordIdsUsed,
 }) {
   function handleNextRound() {
     setShowModal(false);
@@ -21,7 +21,7 @@ function EndRoundModal({
 
   function handleNewGame() {
     setCurrentRound(0);
-    setWordIdsUsed(prevWordsArr => ([]))
+    setWordIdsUsed((prevWordsArr) => []);
     setShowModal(false);
     handleNewGameClick();
   }
@@ -33,7 +33,7 @@ function EndRoundModal({
           You found {foundSynonyms.length} synonyms!
         </p>
       ) : (
-        <p className="end-round-message">Game Over!</p> 
+        <p className="end-round-message">Game Over!</p>
       )}
       <p>Game Score: {gameScore}</p>
       <p>Round Score: {roundScore}</p>
@@ -49,8 +49,3 @@ function EndRoundModal({
 }
 
 export default EndRoundModal;
-// export default class Modal extends React.Component {
-//   render() {
-//     return <div>Hello Modal</div>;
-//   }
-// }

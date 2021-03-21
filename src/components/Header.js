@@ -52,7 +52,7 @@ function Header({
                 Leaderboard
               </NavLink>
             </li> */}
-            {/* <li className="nav-li">
+              {/* <li className="nav-li">
                 <div
                   className={showHelpModal || showModal ? "profile-fade" : "profile"}
                 >

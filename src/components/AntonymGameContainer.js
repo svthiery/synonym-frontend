@@ -80,13 +80,13 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       body: JSON.stringify({
         word_id: randAntId,
         game_id: newGameId,
-        score: 0,     
+        score: 0,
       }),
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
         console.log("New Round Object", newRoundObj);
-        let usedAntId = randAntId;  
+        let usedAntId = randAntId;
         setWordIdsUsed([...wordIdsUsed, usedAntId]);
         console.log(wordIdsUsed);
         getNewWord(randAntId);
@@ -99,16 +99,16 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     return wordIdsUsed.includes(randAntId);
   }
 
-  function checkIfWordIsMissingAntonyms(randAntId){
-    let missingAnts = true
+  function checkIfWordIsMissingAntonyms(randAntId) {
+    let missingAnts = true;
     fetch(`https://evening-dusk-01854.herokuapp.com/antonyms/${randAntId}`)
       .then((response) => response.json())
       .then((word) => {
         if (word.antonyms) {
-          missingAnts = false
+          missingAnts = false;
         }
       });
-      return missingAnts
+    return missingAnts;
   }
 
   function getNewWord(wordId) {
@@ -132,7 +132,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   }
 
   function createSynObjs(synsArray) {
-    const slicedSynsArray = synsArray.slice(0, 12)
+    const slicedSynsArray = synsArray.slice(0, 12);
     const synsObjs = slicedSynsArray.map((syn) => {
       return {
         syn: syn.toUpperCase(),
@@ -189,7 +189,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function showEndRoundModal() {
     if (foundSynonyms.length === 0) {
-      playGameOverSound()
+      playGameOverSound();
     }
     setShowModal(true);
   }
@@ -208,7 +208,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   function saveFinalScore() {
     console.log(gameScore);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
-      method: "PATCH", // or 'PUT'
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -243,19 +243,9 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
         playCorrectSound();
       }
     });
-    // console.log(currentSynonyms.length, foundSynonyms.length)
-    // if (currentSynonyms.length === foundSynonyms.length) {
-    //     let won = "You guessed all the words!"
-    //     setGuessAlert(won)
-    // }
-    // console.log(currentAnagrams)
-    // if (currentAnagrams.length === 0) {
-    //     let won = "You guessed all the words!"
-    //     setGuessAlert(won)
-    // }
     if (foundMatch === false && currentGuess) {
       console.log(currentGuess);
-      playWrongSound()
+      playWrongSound();
       setShowWrongGuessModal(true);
       setTimeout(function () {
         setShowWrongGuessModal(false);
@@ -268,14 +258,8 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       foundSynonyms.length === currentSynonyms.length &&
       foundSynonyms.length !== 0
     ) {
-      // let won = "You guessed all the words!"
-      // setGuessAlert(won)
-      // playWinSound()
-      // let bonusScore = roundScore + 500
-      // setRoundScore(bonusScore)
-      // setCurrentRound((prevRoundValue) => prevRoundValue + 1)
-      setRoundScore((prevRoundScore) => prevRoundScore + 500)
-      setGameScore((prevGameScore) => prevGameScore + 500)
+      setRoundScore((prevRoundScore) => prevRoundScore + 500);
+      setGameScore((prevGameScore) => prevGameScore + 500);
       stopTimer();
       showEndRoundModal();
       playWinSound();
@@ -284,16 +268,26 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   ////Sound Effects
 
-  //   const winSoundUrl = "%PUBLIC_URL%/109662__grunz__success.mp3"
-
-  const [playWinSound] = useSound(soundfiletwo, {volume: 0.25 });
-  const [playWrongSound] = useSound(wrongSound, {volume: 0.25 })
-  const [playCorrectSound] = useSound(correctSound, {volume: 0.25 });
-  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.25})
+  const [playWinSound] = useSound(soundfiletwo, { volume: 0.25 });
+  const [playWrongSound] = useSound(wrongSound, { volume: 0.25 });
+  const [playCorrectSound] = useSound(correctSound, { volume: 0.25 });
+  const [playGameOverSound] = useSound(gameOverSound, { volume: 0.25 });
 
   return (
-    <div className={showModal || showHelpModal ? "outer-game-container-fade": "outer-game-container"}>
-      <h1 className={showHelpModal || showModal ? "gamepage-title-fade": "gamepage-title"}>Antonym</h1>
+    <div
+      className={
+        showModal || showHelpModal
+          ? "outer-game-container-fade"
+          : "outer-game-container"
+      }
+    >
+      <h1
+        className={
+          showHelpModal || showModal ? "gamepage-title-fade" : "gamepage-title"
+        }
+      >
+        Antonym
+      </h1>
       <div className="game-container">
         <InfoBar
           seconds={seconds}

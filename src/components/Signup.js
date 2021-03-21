@@ -18,8 +18,6 @@ function Signup({ setCurrentUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // TODO: login the user
-    // POST /login
     fetch(`https://evening-dusk-01854.herokuapp.com/signup`, {
       method: "POST",
       headers: {
@@ -40,7 +38,7 @@ function Signup({ setCurrentUser }) {
 
           localStorage.setItem("token", token);
           setCurrentUser(data);
-          console.log(data)
+          console.log(data);
           history.push("/");
         }
       });
@@ -51,25 +49,25 @@ function Signup({ setCurrentUser }) {
       <h1>Sign Up</h1>
       <div className="signup-form-box">
         <form onSubmit={handleSubmit} autoComplete="off">
-        <div className="username-div">
-          <label>Username </label>
-          <input
-          className="login-input"
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
+          <div className="username-div">
+            <label>Username </label>
+            <input
+              className="login-input"
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
           </div>
           <div className="password-div">
-          <label>Password </label>
-          <input
-          className="login-input"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+            <label>Password </label>
+            <input
+              className="login-input"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
           </div>
           {errors.map((error) => {
             return <p className="error">{error}</p>;

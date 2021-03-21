@@ -66,7 +66,7 @@ button,
 .signup-btn-fade {
   border-radius: 30px;
   border: no-border;
-  background-color: RGBA(255,234,219,0.5);
+  background-color: RGBA(255, 234, 219, 0.5);
   font-size: 15px;
   padding: 12px;
   padding-right: 25px;
@@ -88,12 +88,12 @@ button,
 }
 
 .title-fade {
-  background-color: RGBA(103,138,116,0.5);
+  background-color: RGBA(103, 138, 116, 0.5);
   margin: 0px;
   padding: 25px;
   color: #ffeadb;
   font-size: 45px;
-  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  text-shadow: 2px 2px RGBA(0, 0, 0, 0.3);
 }
 
 .home-container {
@@ -117,8 +117,8 @@ button,
   flex-wrap: no-wrap;
   align-content: space-around;
   text-align: center;
-  background-color: RGBA(103,138,116,0.5);
-  color: RGBA(0,0,0,0.3);
+  background-color: RGBA(103, 138, 116, 0.5);
+  color: RGBA(0, 0, 0, 0.3);
 }
 
 .home-ant-container {
@@ -140,7 +140,7 @@ button,
   width: 250px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 5px 8px RGBA(247,197,168,0.5);
+  box-shadow: 5px 8px RGBA(247, 197, 168, 0.5);
 }
 
 /* .home-ant-container:hover {
@@ -170,7 +170,7 @@ button,
   margin-bottom: 40px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 5px 8px RGBA(247,197,168,0.5);
+  box-shadow: 5px 8px RGBA(247, 197, 168, 0.5);
 }
 
 .user-scores {
@@ -221,7 +221,7 @@ button,
   padding: 25px;
   color: #ffeadb;
   font-size: 45px;
-  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  text-shadow: 2px 2px RGBA(0, 0, 0, 0.3);
 }
 
 .outer-game-container {
@@ -231,8 +231,8 @@ button,
 }
 
 .outer-game-container-fade {
-  background-color: RGBA(103,138,116,0.5);
-  color: RGBA(0,0,0,0.5);
+  background-color: RGBA(103, 138, 116, 0.5);
+  color: RGBA(0, 0, 0, 0.5);
   padding: 70px;
   padding-top: 40px;
 }
@@ -426,7 +426,7 @@ button,
 }
 
 .header-fade {
-  border-bottom: 2px solid RGBA(128,128,128,0.5);
+  border-bottom: 2px solid RGBA(128, 128, 128, 0.5);
 }
 
 .header-name {
@@ -461,8 +461,8 @@ button,
   /* border-style: solid;
   border-width: 2px;
   border-color: gray; */
-  background-color: RGBA(247,197,168,0.5);
-  color: RGBA(0,0,0,0.3);
+  background-color: RGBA(247, 197, 168, 0.5);
+  color: RGBA(0, 0, 0, 0.3);
 }
 
 .nav-heading-name {
@@ -510,14 +510,14 @@ button,
 }
 
 .nav-link-fade:link {
-  color: RGBA(0,0,0,0.3);
+  color: RGBA(0, 0, 0, 0.3);
 }
 .nav-link-fade:visited {
-  color: RGBA(0,0,0,0.3);
+  color: RGBA(0, 0, 0, 0.3);
 }
 
 .nav-link-fade:hover {
-  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  text-shadow: 2px 2px RGBA(0, 0, 0, 0.3);
   color: #ffeadb;
 }
 
@@ -528,20 +528,19 @@ button,
 }
 
 .circle {
-
-    /* background: #f7c5a8;
+  /* background: #f7c5a8;
     border-radius: 50%; */
-    width: 53px;
-    height: 53px;
-    text-align: center;
-    /* border: solid;
+  width: 53px;
+  height: 53px;
+  text-align: center;
+  /* border: solid;
     border-width: 1px; */
-    /* border-color: gray;
+  /* border-color: gray;
     box-shadow: 1px 1px #678a74; */
 }
 
 .circle:hover {
-  text-shadow: 2px 2px RGBA(0,0,0,0.3);
+  text-shadow: 2px 2px RGBA(0, 0, 0, 0.3);
   color: #ffeadb;
 }
 
@@ -577,8 +576,8 @@ button,
   margin: auto;
   width: 40%;
   text-align: center;
-  background-color: RGBA(255,234,219,0.5);
-  color: RGBA(0,0,0,0.3);
+  background-color: RGBA(255, 234, 219, 0.5);
+  color: RGBA(0, 0, 0, 0.3);
 }
 
 .leaderboard-ul {
@@ -594,7 +593,7 @@ button,
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: RGBA(255,234,219,0.5);
+  background-color: RGBA(255, 234, 219, 0.5);
 }
 
 .high-score-li {
@@ -608,7 +607,7 @@ button,
   float: left;
   width: 10%;
   text-align: center;
-  background-color: RGBA(255,234,219,0.5);
+  background-color: RGBA(255, 234, 219, 0.5);
 }
 
 /* ------ Footer ------ */

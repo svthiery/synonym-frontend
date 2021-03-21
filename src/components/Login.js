@@ -18,8 +18,6 @@ function Login({ setCurrentUser, currentUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // TODO: login the user
-    // POST /login
     fetch(`https://evening-dusk-01854.herokuapp.com/login`, {
       method: "POST",
       headers: {
@@ -29,8 +27,6 @@ function Login({ setCurrentUser, currentUser }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        // use the response to set state
-        //   console.log(user)
         if (data.errors) {
           setErrors(data.errors);
           setFormData({
@@ -56,7 +52,7 @@ function Login({ setCurrentUser, currentUser }) {
           <div className="username-div">
             <label>Username </label>
             <input
-            className="login-input"
+              className="login-input"
               type="text"
               name="username"
               value={formData.username}
@@ -66,7 +62,7 @@ function Login({ setCurrentUser, currentUser }) {
           <div className="password-div">
             <label>Password </label>
             <input
-            className="login-input"
+              className="login-input"
               type="password"
               name="password"
               value={formData.password}
@@ -79,7 +75,10 @@ function Login({ setCurrentUser, currentUser }) {
           <input className="login-btn" type="submit" value="LOG IN" />
         </form>
         <div>
-          <p>To play without creating an account, use the following credentials to log in:</p>
+          <p>
+            To play without creating an account, use the following credentials
+            to log in:
+          </p>
           <p>Username: anon</p>
           <p>Password: play</p>
         </div>
