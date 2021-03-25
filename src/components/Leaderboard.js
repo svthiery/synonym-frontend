@@ -1,4 +1,4 @@
-function Leaderboard({ games, currentUser, showHelpModal }) {
+function Leaderboard({ games, showHelpModal }) {
   const gamesList = games.slice(0, 10).map((game) => {
     return (
       <li className={showHelpModal ? "high-score-li-fade" : "high-score-li"}>

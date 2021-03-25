@@ -9,9 +9,7 @@ function EndRoundModal({
   startNewRound,
   currentGame,
   handleNewGameClick,
-  userGamesList,
   setCurrentRound,
-  currentRound,
   setWordIdsUsed,
 }) {
   function handleNextRound() {

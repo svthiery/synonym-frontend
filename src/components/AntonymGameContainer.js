@@ -6,13 +6,12 @@ import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal";
-import soundfile from "../assets/109662__grunz__success.mp3";
 import soundfiletwo from "../assets/109662__grunz__success.wav";
 import correctSound from "../assets/correct-choice.wav";
 import gameOverSound from "../assets/game-over.mp3";
 import wrongSound from "../assets/wrong-buzz.wav";
 
-function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
+function AntonymGameContainer({ currentUser, showHelpModal }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
   const [gameScore, setGameScore] = useState(0);
@@ -38,7 +37,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
 
   function handleNewGameClick() {
     setCurrentRound(0);
-    console.log(wordIdsUsed);
+    // console.log(wordIdsUsed);
     // Create new game
     fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
@@ -53,7 +52,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     })
       .then((response) => response.json())
       .then((newGameObj) => {
-        console.log("New Game Object:", newGameObj);
+        // console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
         // console.log(currentRound)
         setGameScore(newGameObj.score);
@@ -69,9 +68,9 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     do {
       i += 1;
       randAntId = Math.ceil(Math.random() * 83);
-      console.log({ randAntId, i });
+      // console.log({ randAntId, i });
     } while (checkIfWordIsRepeat(randAntId));
-    console.log(randAntId);
+    // console.log(randAntId);
     fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
       method: "POST",
       headers: {
@@ -85,10 +84,10 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
-        console.log("New Round Object", newRoundObj);
+        // console.log("New Round Object", newRoundObj);
         let usedAntId = randAntId;
         setWordIdsUsed([...wordIdsUsed, usedAntId]);
-        console.log(wordIdsUsed);
+        // console.log(wordIdsUsed);
         getNewWord(randAntId);
         // let newRoundNum = currentRound + 1
         // setCurrentRound(newRoundNum)
@@ -115,7 +114,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     fetch(`https://evening-dusk-01854.herokuapp.com/antonyms/${wordId}`)
       .then((response) => response.json())
       .then((word) => {
-        console.log(word);
+        // console.log(word);
         setCurrentHeadword(word.headword.toUpperCase());
         setCurrentPartOfSpeech(word.part_of_speech);
         setGuessFormDisabled(false);
@@ -206,7 +205,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
   }
 
   function saveFinalScore() {
-    console.log(gameScore);
+    // console.log(gameScore);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH",
       headers: {
@@ -216,11 +215,11 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        // console.log("Success:", data);
       });
   }
 
-  function showUnfoundWords() {}
+  // function showUnfoundWords() {}
 
   //-------------Guess Functions-------------------
 
@@ -244,7 +243,7 @@ function AntonymGameContainer({ currentUser, userGamesList, showHelpModal }) {
       }
     });
     if (foundMatch === false && currentGuess) {
-      console.log(currentGuess);
+      // console.log(currentGuess);
       playWrongSound();
       setShowWrongGuessModal(true);
       setTimeout(function () {

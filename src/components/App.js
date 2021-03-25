@@ -9,7 +9,6 @@ import Signup from "./Signup";
 import GameContainer from "./GameContainer";
 import AntonymGameContainer from "./AntonymGameContainer";
 import Leaderboard from "./Leaderboard";
-import UserScores from "./UserScores";
 import HelpModal from "./HelpModal";
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
       })
         .then((r) => r.json())
         .then((user) => {
-          console.log(user);
+          // console.log(user);
           setCurrentUser(user);
         });
     }
@@ -43,7 +42,7 @@ function App() {
       .then((response) => response.json())
       .then((gamesArr) => {
         gamesArr.sort((a, b) => b.score - a.score);
-        console.log(gamesArr);
+        // console.log(gamesArr);
         setGames(gamesArr);
       });
   }, [gameScore]);

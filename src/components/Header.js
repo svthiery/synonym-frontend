@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import HelpModal from "./HelpModal";
-import Avatar from "../assets/free-avatar.svg";
+// import HelpModal from "./HelpModal";
+// import Avatar from "../assets/free-avatar.svg";
 
 function Header({
   currentUser,

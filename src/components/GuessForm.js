@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 function GuessForm({
-  currentUser,
   currentGame,
   guess,
   setGuess,
@@ -39,12 +38,12 @@ function GuessForm({
 
   function fromMic() {
     let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    console.log(audioConfig);
+    // console.log(audioConfig);
     let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 
-    console.log("Speak into your microphone.");
+    // console.log("Speak into your microphone.");
     recognizer.recognizeOnceAsync((result) => {
-      console.log(`RECOGNIZED: Text=${result.text}`);
+      // console.log(`RECOGNIZED: Text=${result.text}`);
       if (result.text) {
         let textGuess = result.text.toUpperCase();
         let newGuess = textGuess.substring(0, textGuess.length - 1);

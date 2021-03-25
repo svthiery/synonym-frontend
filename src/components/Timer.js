@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 function Timer({
   seconds,
   setSeconds,
   timerIsActive,
-  setTimerIsActive,
-  startTimer,
   stopTimer,
-  resetTimer,
 }) {
   useEffect(() => {
     let interval = null;

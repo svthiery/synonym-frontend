@@ -8,7 +8,7 @@ function Signup({ setCurrentUser }) {
   });
 
   const [errors, setErrors] = useState([]);
-  console.log(errors);
+  // console.log(errors);
 
   const history = useHistory();
 
@@ -38,7 +38,7 @@ function Signup({ setCurrentUser }) {
 
           localStorage.setItem("token", token);
           setCurrentUser(data);
-          console.log(data);
+          // console.log(data);
           history.push("/");
         }
       });

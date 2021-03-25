@@ -13,7 +13,6 @@ import gameOverSound from "../assets/game-over.mp3";
 
 function GameContainer({
   currentUser,
-  userGamesList,
   showModal,
   setShowModal,
   showHelpModal,
@@ -44,7 +43,7 @@ function GameContainer({
 
   function handleNewGameClick() {
     setCurrentRound(0);
-    console.log(wordIdsUsed);
+    // console.log(wordIdsUsed);
     fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
       headers: {
@@ -58,7 +57,7 @@ function GameContainer({
     })
       .then((response) => response.json())
       .then((newGameObj) => {
-        console.log("New Game Object:", newGameObj);
+        // console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
         // console.log(currentRound)
         setGameScore(newGameObj.score);
@@ -67,20 +66,20 @@ function GameContainer({
   }
 
   function startNewRound(newGame) {
-    console.log(currentGame);
-    console.log(newGame);
+    // console.log(currentGame);
+    // console.log(newGame);
     let newGameId = newGame.id;
     let randWordId = null;
     let i = 0;
     do {
       i += 1;
       randWordId = Math.ceil(Math.random() * 179);
-      console.log({ randWordId, i });
+      // console.log({ randWordId, i });
     } while (checkWordIsNotRepeat(randWordId));
     // if (checkWordIsNotRepeat(randWordId)) {
     //     randWordId = Math.ceil(Math.random() * 7);
     // }
-    console.log(randWordId);
+    // console.log(randWordId);
     fetch(`https://evening-dusk-01854.herokuapp.com/rounds`, {
       // fetch(`http://localhost:3001/rounds`, {
       method: "POST",
@@ -95,10 +94,10 @@ function GameContainer({
     })
       .then((response) => response.json())
       .then((newRoundObj) => {
-        console.log("New Round Object", newRoundObj);
+        // console.log("New Round Object", newRoundObj);
         let usedWordId = randWordId;
         setWordIdsUsed([...wordIdsUsed, usedWordId]);
-        console.log(wordIdsUsed);
+        // console.log(wordIdsUsed);
         getNewWord(randWordId);
         // let newRoundNum = currentRound + 1
         // setCurrentRound(newRoundNum)
@@ -138,7 +137,7 @@ function GameContainer({
         isFound: false,
       };
     });
-    console.log(synsObjs);
+    // console.log(synsObjs);
     setCurrentSynonyms(synsObjs);
     createAnagramObjs(synsObjs);
   }
@@ -202,7 +201,7 @@ function GameContainer({
   }
 
   function saveFinalScore() {
-    console.log(gameScore);
+    // console.log(gameScore);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH",
       headers: {
@@ -212,11 +211,11 @@ function GameContainer({
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        // console.log("Success:", data);
       });
   }
 
-  function showUnfoundWords() {}
+  // function showUnfoundWords() {}
 
   //-------------Guess Functions-------------------
 
@@ -240,7 +239,7 @@ function GameContainer({
       }
     });
     if (foundMatch === false && currentGuess) {
-      console.log(currentGuess);
+      // console.log(currentGuess);
       setShowWrongGuessModal(true);
       playWrongSound();
       setTimeout(function () {
