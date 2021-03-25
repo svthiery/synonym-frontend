@@ -8,7 +8,7 @@ function Login({ setCurrentUser }) {
   });
 
   const [errors, setErrors] = useState([]);
-  console.log(errors);
+  // console.log(errors);
 
   const history = useHistory();
 
