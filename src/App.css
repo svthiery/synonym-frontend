@@ -124,7 +124,8 @@ button,
 .home-ant-container {
   background-color: white;
   height: 350px;
-  width: 250px;
+  /* width: 250px; */
+  width: 19%;
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
@@ -137,7 +138,8 @@ button,
 .home-ant-container-fade {
   background-color: white;
   height: 350px;
-  width: 250px;
+  /* width: 250px; */
+  width: 19%;
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px RGBA(247, 197, 168, 0.5);
@@ -150,7 +152,8 @@ button,
 .home-syn-container {
   background-color: white;
   height: 420px;
-  width: 320px;
+  /* width: 320px; */
+  width: 24%;
   margin-top: 30px;
   margin-bottom: 40px;
   border-radius: 20px;
@@ -165,7 +168,8 @@ button,
 .home-syn-container-fade {
   background-color: white;
   height: 420px;
-  width: 320px;
+  /* width: 320px; */
+  width: 24%;
   margin-top: 30px;
   margin-bottom: 40px;
   border-radius: 20px;
@@ -176,10 +180,21 @@ button,
 .user-scores {
   background-color: white;
   height: 350px;
-  width: 250px;
+  /* width: 250px; */
+  width: 19%;
   border-radius: 20px;
   text-align: center;
   box-shadow: 5px 8px #f7c5a8;
+}
+
+.user-scores-fade {
+  background-color: white;
+  height: 350px;
+  /* width: 250px; */
+  width: 19%;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 5px 8px RGBA(247, 197, 168, 0.5);
 }
 
 .indv-user-score {

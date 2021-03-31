@@ -22,7 +22,7 @@ function HomeContainer({ games, currentUser, showHelpModal }) {
   }
 
   return (
-    <div>
+    <div className="home-container-outer">
       <h1 className={showHelpModal ? "title-fade" : "title"}>Synonym</h1>
       <div className={showHelpModal ? "home-container-fade" : "home-container"}>
         <div
@@ -44,7 +44,7 @@ function HomeContainer({ games, currentUser, showHelpModal }) {
           <p className="syn-play-button">>></p>
         </div>
         {currentUser ? (
-          <UserScores games={games} currentUser={currentUser} />
+          <UserScores games={games} currentUser={currentUser} showHelpModal={showHelpModal}/>
         ) : (
           <div></div>
         )}
