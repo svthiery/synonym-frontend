@@ -106,6 +106,7 @@ button,
   background-color: #678a74;
   align-content: space-around;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .home-container-fade {
@@ -180,6 +181,7 @@ button,
 .user-scores {
   background-color: white;
   height: 350px;
+  /* height: auto; */
   /* width: 250px; */
   width: 19%;
   border-radius: 20px;
@@ -582,14 +584,14 @@ button,
 
 .leaderboard {
   margin: auto;
-  width: 60%;
+  width: 80%;
   text-align: center;
   background-color: #ffeadb;
 }
 
 .leaderboard-fade {
   margin: auto;
-  width: 40%;
+  width: 80%;
   text-align: center;
   background-color: RGBA(255, 234, 219, 0.5);
   color: RGBA(0, 0, 0, 0.3);
@@ -601,6 +603,8 @@ button,
   padding: 0;
   text-align: center;
   background-color: #ffeadb;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .leaderboard-ul-fade {
