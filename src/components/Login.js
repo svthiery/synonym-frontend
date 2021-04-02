@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import ReactLoading from 'react-loading';
 
 function Login({ setCurrentUser }) {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ function Login({ setCurrentUser }) {
   const [errors, setErrors] = useState([]);
   // console.log(errors);
 
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+
   const history = useHistory();
 
   function handleChange(e) {
@@ -18,6 +21,7 @@ function Login({ setCurrentUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoginLoading(true)
     fetch(`https://evening-dusk-01854.herokuapp.com/login`, {
       method: "POST",
       headers: {
@@ -39,6 +43,7 @@ function Login({ setCurrentUser }) {
           localStorage.setItem("token", token);
 
           setCurrentUser(user);
+          setIsLoginLoading(false);
           history.push("/");
         }
       });
@@ -47,8 +52,8 @@ function Login({ setCurrentUser }) {
   return (
     <div className="login">
       <h1>Log In</h1>
-      <div className="login-form-box">
-        <form onSubmit={handleSubmit} autoComplete="off">
+       <div className="login-form-box">
+        {isLoginLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <form onSubmit={handleSubmit} autoComplete="off">
           <div className="username-div">
             <label>Username </label>
             <input
@@ -73,7 +78,7 @@ function Login({ setCurrentUser }) {
             return <p className="error">{error}</p>;
           })}
           <input className="login-btn" type="submit" value="LOG IN" />
-        </form>
+        </form>}
         <div>
           <p>
             To play without creating an account, use the following credentials
