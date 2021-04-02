@@ -13,7 +13,7 @@ function Leaderboard({ games, showHelpModal, isScoresLoading, setIsScoresLoading
   return (
     <div className={showHelpModal ? "leaderboard-fade" : "leaderboard"}>
       <h1>Leaderboard</h1>
-      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <ul className={showHelpModal ? "leaderboard-ul-fade" : "leaderboard-ul"}>
+      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="loading"/> : <ul className={showHelpModal ? "leaderboard-ul-fade" : "leaderboard-ul"}>
         {gamesList}
       </ul>}
     </div>

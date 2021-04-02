@@ -53,7 +53,7 @@ function Login({ setCurrentUser }) {
     <div className="login">
       <h1>Log In</h1>
        <div className="login-form-box">
-        {isLoginLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <form onSubmit={handleSubmit} autoComplete="off">
+        {isLoginLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="loading"/> : <form onSubmit={handleSubmit} autoComplete="off">
           <div className="username-div">
             <label>Username </label>
             <input

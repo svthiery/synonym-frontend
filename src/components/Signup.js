@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import ReactLoading from 'react-loading';
 
 function Signup({ setCurrentUser }) {
   const [formData, setFormData] = useState({
@@ -12,12 +13,15 @@ function Signup({ setCurrentUser }) {
 
   const history = useHistory();
 
+  const [isSignupLoading, setIsSignupLoading] = useState(false);
+
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsSignupLoading(true)
     fetch(`https://evening-dusk-01854.herokuapp.com/signup`, {
       method: "POST",
       headers: {
@@ -39,6 +43,7 @@ function Signup({ setCurrentUser }) {
           localStorage.setItem("token", token);
           setCurrentUser(data);
           // console.log(data);
+          setIsSignupLoading(false);
           history.push("/");
         }
       });
@@ -48,7 +53,7 @@ function Signup({ setCurrentUser }) {
     <div className="signup">
       <h1>Sign Up</h1>
       <div className="signup-form-box">
-        <form onSubmit={handleSubmit} autoComplete="off">
+        { isSignupLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="loading"/> : <form onSubmit={handleSubmit} autoComplete="off">
           <div className="username-div">
             <label>Username </label>
             <input
@@ -73,7 +78,7 @@ function Signup({ setCurrentUser }) {
             return <p className="error">{error}</p>;
           })}
           <input className="signup-btn" type="submit" value="REGISTER" />
-        </form>
+        </form>}
       </div>
     </div>
   );

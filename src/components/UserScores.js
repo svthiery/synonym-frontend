@@ -12,7 +12,7 @@ function UserScores({ currentUser, games, showHelpModal, isScoresLoading }) {
   return (
     <div className={showHelpModal ? "user-scores-fade" : "user-scores"}>
       <h2>Your High Scores</h2>
-      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <div>{userGamesListShort}</div>}
+      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="loading"/> : <div>{userGamesListShort}</div>}
     </div>
   );
 }
