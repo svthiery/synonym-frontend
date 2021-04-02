@@ -1,4 +1,6 @@
-function UserScores({ currentUser, games, showHelpModal }) {
+import ReactLoading from 'react-loading';
+
+function UserScores({ currentUser, games, showHelpModal, isScoresLoading }) {
   const userGamesList = games.slice(0, 10).filter((game) => {
     return game.user_id === currentUser.id;
   });
@@ -10,7 +12,7 @@ function UserScores({ currentUser, games, showHelpModal }) {
   return (
     <div className={showHelpModal ? "user-scores-fade" : "user-scores"}>
       <h2>Your High Scores</h2>
-      <div>{userGamesListShort}</div>
+      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <div>{userGamesListShort}</div>}
     </div>
   );
 }

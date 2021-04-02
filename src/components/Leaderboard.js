@@ -1,6 +1,6 @@
 import ReactLoading from 'react-loading';
 
-function Leaderboard({ games, showHelpModal, isLeaderboardLoading, setIsLeaderboardLoading }) {
+function Leaderboard({ games, showHelpModal, isScoresLoading, setIsScoresLoading }) {
   const gamesList = games.slice(0, 10).map((game) => {
     return (
       <li className={showHelpModal ? "high-score-li-fade" : "high-score-li"}>
@@ -13,7 +13,7 @@ function Leaderboard({ games, showHelpModal, isLeaderboardLoading, setIsLeaderbo
   return (
     <div className={showHelpModal ? "leaderboard-fade" : "leaderboard"}>
       <h1>Leaderboard</h1>
-      {isLeaderboardLoading ? <ReactLoading type={"bars"} color={"grey"} className="leaderboard-loading"/> : <ul className={showHelpModal ? "leaderboard-ul-fade" : "leaderboard-ul"}>
+      {isScoresLoading ? <ReactLoading type={"bubbles"} color={"grey"} className="leaderboard-loading"/> : <ul className={showHelpModal ? "leaderboard-ul-fade" : "leaderboard-ul"}>
         {gamesList}
       </ul>}
     </div>

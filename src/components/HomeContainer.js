@@ -2,7 +2,7 @@ import UserScores from "./UserScores";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function HomeContainer({ games, currentUser, showHelpModal }) {
+function HomeContainer({ games, currentUser, showHelpModal, isScoresLoading }) {
   const history = useHistory();
 
   function handlePlaySynonym() {
@@ -44,7 +44,7 @@ function HomeContainer({ games, currentUser, showHelpModal }) {
           <p className="syn-play-button">>></p>
         </div>
         {currentUser ? (
-          <UserScores games={games} currentUser={currentUser} showHelpModal={showHelpModal}/>
+          <UserScores games={games} currentUser={currentUser} showHelpModal={showHelpModal} isScoresLoading={isScoresLoading} />
         ) : (
           <div></div>
         )}

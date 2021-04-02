@@ -14,7 +14,7 @@ import HelpModal from "./HelpModal";
 
 function App() {
 
-  const [isLeaderboardLoading, setIsLeaderboardLoading] = useState(true)
+  const [isScoresLoading, setIsScoresLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState(null);
   const [games, setGames] = useState([]);
 
@@ -47,7 +47,7 @@ function App() {
         gamesArr.sort((a, b) => b.score - a.score);
         // console.log(gamesArr);
         setGames(gamesArr);
-        setIsLeaderboardLoading(false);
+        setIsScoresLoading(false);
       });
   }, [gameScore]);
 
@@ -81,13 +81,15 @@ function App() {
                 currentUser={currentUser}
                 games={games}
                 showHelpModal={showHelpModal}
+                isScoresLoading={isScoresLoading}
+                setIsScoresLoading={setIsScoresLoading}
               />
               <Leaderboard
                 games={games}
                 currentUser={currentUser}
                 showHelpModal={showHelpModal}
-                isLeaderboardLoading={isLeaderboardLoading}
-                setIsLeaderboardLoading={setIsLeaderboardLoading}
+                isScoresLoading={isScoresLoading}
+                setIsScoresLoading={setIsScoresLoading}
               />
             </Route>
             <Route path="/play">
