@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ReactLoading from 'react-loading';
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -12,6 +13,8 @@ import Leaderboard from "./Leaderboard";
 import HelpModal from "./HelpModal";
 
 function App() {
+
+  const [isLeaderboardLoading, setIsLeaderboardLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState(null);
   const [games, setGames] = useState([]);
 
@@ -44,6 +47,7 @@ function App() {
         gamesArr.sort((a, b) => b.score - a.score);
         // console.log(gamesArr);
         setGames(gamesArr);
+        setIsLeaderboardLoading(false);
       });
   }, [gameScore]);
 
@@ -82,6 +86,8 @@ function App() {
                 games={games}
                 currentUser={currentUser}
                 showHelpModal={showHelpModal}
+                isLeaderboardLoading={isLeaderboardLoading}
+                setIsLeaderboardLoading={setIsLeaderboardLoading}
               />
             </Route>
             <Route path="/play">

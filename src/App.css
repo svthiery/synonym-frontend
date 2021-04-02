@@ -629,6 +629,10 @@ button,
   background-color: RGBA(255, 234, 219, 0.5);
 }
 
+.leaderboard-loading {
+  margin: auto;
+}
+
 /* ------ Footer ------ */
 
 .footer {
