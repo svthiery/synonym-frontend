@@ -587,6 +587,7 @@ button,
   width: 80%;
   text-align: center;
   background-color: #ffeadb;
+  padding-bottom: 60px;
 }
 
 .leaderboard-fade {
