@@ -16,7 +16,7 @@ function GuessForm({
   }
 
   function handleSubmit(e) {
-    console.log(e);
+    // console.log(e);
     e.preventDefault();
     let capGuess = guess.toUpperCase();
     checkForMatches(capGuess);
