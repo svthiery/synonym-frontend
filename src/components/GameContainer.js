@@ -6,7 +6,7 @@ import GuessForm from "./GuessForm";
 import FoundWords from "./FoundWords";
 import EndRoundModal from "./EndRoundModal";
 import WrongGuessModal from "./WrongGuessModal";
-import soundfiletwo from "../assets/109662__grunz__success.wav";
+import winSound from "../assets/109662__grunz__success.wav";
 import wrongSound from "../assets/wrong-buzz.wav";
 import correctSound from "../assets/correct-choice.wav";
 import gameOverSound from "../assets/game-over.mp3";
@@ -263,7 +263,7 @@ function GameContainer({
 
   ////----------------Sound Effects---------------------------------
 
-  const [playWinSound] = useSound(soundfiletwo, { volume: 0.25 });
+  const [playWinSound] = useSound(winSound, { volume: 0.25 });
   const [playWrongSound] = useSound(wrongSound, { volume: 0.25 });
   const [playCorrectSound] = useSound(correctSound, { volume: 0.25 });
   const [playGameOverSound] = useSound(gameOverSound, { volume: 0.25 });
