@@ -194,14 +194,15 @@ function GameContainer({
 
   function endRound() {
     let newGameScore = gameScore + roundScore;
-    setGameScore((prevGameScore) => prevGameScore + roundScore);
+    // setGameScore((prevGameScore) => prevGameScore + roundScore);
+    setGameScore(newGameScore)
     setGuessFormDisabled(true);
     showEndRoundModal();
     saveFinalScore();
   }
 
   function saveFinalScore() {
-    console.log(`Final Score: ${gameScore}`);
+    console.log(`Game Score: ${gameScore}`);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH",
       headers: {
