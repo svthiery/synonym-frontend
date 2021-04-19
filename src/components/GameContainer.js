@@ -201,7 +201,7 @@ function GameContainer({
   }
 
   function saveFinalScore() {
-    // console.log(gameScore);
+    console.log(`Final Score: ${gameScore}`);
     fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
       method: "PATCH",
       headers: {
