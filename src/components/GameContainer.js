@@ -193,28 +193,50 @@ function GameContainer({
   }
 
   function endRound() {
-    let newGameScore = gameScore + roundScore;
-    // setGameScore((prevGameScore) => prevGameScore + roundScore);
-    setGameScore(newGameScore)
+    // console.log(`Round Score: ${roundScore}`);
+    // let newGameScore = gameScore + roundScore;
+    setGameScore((prevGameScore) => prevGameScore + roundScore);
+    // console.log(`Game Score: ${gameScore}`);
+    // setGameScore(newGameScore)
     setGuessFormDisabled(true);
     showEndRoundModal();
-    saveFinalScore();
+    // saveFinalScore();
   }
 
-  function saveFinalScore() {
-    console.log(`Game Score: ${gameScore}`);
-    fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ score: gameScore }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      });
-  }
+  // function saveFinalScore() {
+  //   console.log(`Game Score: ${gameScore}`);
+  //   fetch(`https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ score: gameScore }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Success:", data);
+  //     });
+  // }
+
+  useEffect(() => {
+    if (currentGame) {
+      // console.log(`Game Score: ${gameScore}`);
+      fetch(
+        `https://evening-dusk-01854.herokuapp.com/games/${currentGame.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ score: gameScore }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        });
+    }
+  }, [gameScore]);
 
   // function showUnfoundWords() {}
 
@@ -290,6 +312,7 @@ function GameContainer({
           roundScore={roundScore}
           currentRound={currentRound}
           gameScore={gameScore}
+          setGameScore={setGameScore}
         />
         <div className="headword-and-guess-div">
           <WrongGuessModal

@@ -5,6 +5,9 @@ function Timer({
   setSeconds,
   timerIsActive,
   stopTimer,
+  // gameScore, 
+  // setGameScore, 
+  // roundScore
 }) {
   useEffect(() => {
     let interval = null;

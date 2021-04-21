@@ -11,6 +11,7 @@ function InfoBar({
   roundScore,
   currentRound,
   gameScore,
+  setGameScore
 }) {
   return (
     <div className="info-bar">
@@ -23,6 +24,8 @@ function InfoBar({
         stopTimer={stopTimer}
         resetTimer={resetTimer}
         roundScore={roundScore}
+        gameScore={gameScore}
+        setGameScore={setGameScore}
       />
       <div className="round-score-div">
         <h4>ROUND SCORE</h4>
