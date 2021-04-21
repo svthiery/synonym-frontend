@@ -45,7 +45,7 @@ function App() {
       .then((response) => response.json())
       .then((gamesArr) => {
         gamesArr.sort((a, b) => b.score - a.score);
-        // console.log(gamesArr);
+        console.log(gamesArr);
         setGames(gamesArr);
         setIsScoresLoading(false);
       });

@@ -1,9 +1,9 @@
 import ReactLoading from 'react-loading';
 
 function UserScores({ currentUser, games, showHelpModal, isScoresLoading }) {
-  const userGamesList = games.slice(0, 10).filter((game) => {
+  const userGamesList = games.filter((game) => {
     return game.user_id === currentUser.id;
-  });
+  }).slice(0, 10);
 
   const userGamesListShort = userGamesList.map((game) => {
     return <div className="indv-user-score">{game.score}</div>;
