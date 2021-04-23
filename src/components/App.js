@@ -38,6 +38,7 @@ function App() {
           setCurrentUser(user);
         });
     }
+    console.log(games)
   }, []);
 
   useEffect(() => {
