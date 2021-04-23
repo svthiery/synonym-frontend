@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading';
 function Leaderboard({ games, showHelpModal, isScoresLoading, setIsScoresLoading }) {
   const gamesList = games.slice(0, 10).map((game) => {
     return (
-      <li className={showHelpModal ? "high-score-li-fade" : "high-score-li"}>
+      <li key={game.id} className={showHelpModal ? "high-score-li-fade" : "high-score-li"}>
         <div>{game.game_user}</div>
         <div>{game.score}</div>
       </li>
