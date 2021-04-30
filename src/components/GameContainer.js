@@ -18,6 +18,8 @@ function GameContainer({
   showHelpModal,
   gameScore,
   setGameScore,
+  games,
+  setGames
 }) {
   const [currentGame, setCurrentGame] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
@@ -57,6 +59,8 @@ function GameContainer({
     })
       .then((response) => response.json())
       .then((newGameObj) => {
+        const updatedGames = [...games, newGameObj]
+        setGames(updatedGames)
         // console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
         // console.log(currentRound)

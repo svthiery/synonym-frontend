@@ -101,6 +101,8 @@ function App() {
                 showHelpModal={showHelpModal}
                 gameScore={gameScore}
                 setGameScore={setGameScore}
+                games={games}
+                setGames={setGames}
               />
             </Route>
             <Route path="/playantonym">
