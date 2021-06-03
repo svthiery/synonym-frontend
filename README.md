@@ -2,7 +2,7 @@
 
 Synonym is a timed word game in which users guess possible synonyms of a given keyword. 
 
-Play online at https://synonym.netlify.app/
+Deployed at https://synonym.netlify.app/
 
 ## Technologies
 
