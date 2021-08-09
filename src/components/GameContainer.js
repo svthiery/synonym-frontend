@@ -61,17 +61,13 @@ function GameContainer({
       .then((newGameObj) => {
         const updatedGames = [...games, newGameObj]
         setGames(updatedGames)
-        // console.log("New Game Object:", newGameObj);
         setCurrentGame(newGameObj);
-        // console.log(currentRound)
         setGameScore(newGameObj.score);
         startNewRound(newGameObj);
       });
   }
 
   function startNewRound(newGame) {
-    // console.log(currentGame);
-    // console.log(newGame);
     let newGameId = newGame.id;
     let randWordId = null;
     let i = 0;
