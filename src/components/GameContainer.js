@@ -33,7 +33,6 @@ function GameContainer({
   const [roundScore, setRoundScore] = useState(0);
 
   const [guess, setGuess] = useState("");
-  const [guessAlert, setGuessAlert] = useState("");
   const [guessFormDisabled, setGuessFormDisabled] = useState(false);
 
   // const [showModal, setShowModal] = useState(false)
@@ -45,7 +44,6 @@ function GameContainer({
 
   function handleNewGameClick() {
     setCurrentRound(0);
-    // console.log(wordIdsUsed);
     fetch(`https://evening-dusk-01854.herokuapp.com/games`, {
       method: "POST",
       headers: {
@@ -349,7 +347,6 @@ function GameContainer({
               guess={guess}
               setGuess={setGuess}
               checkForMatches={checkForMatches}
-              guessAlert={guessAlert}
               guessFormDisabled={guessFormDisabled}
               showModal={showModal}
               showHelpModal={showHelpModal}

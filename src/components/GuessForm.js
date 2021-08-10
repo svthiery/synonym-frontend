@@ -1,32 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 function GuessForm({
   currentGame,
   guess,
   setGuess,
   checkForMatches,
-  guessAlert,
   guessFormDisabled,
   showModal,
   showHelpModal,
 }) {
-  function handleChange(e) {
-    let newGuess = e.target.value.toUpperCase();
-    setGuess(newGuess);
-  }
 
-  function handleSubmit(e) {
-    // console.log(e);
-    e.preventDefault();
-    let capGuess = guess.toUpperCase();
-    checkForMatches(capGuess);
-    setGuess("");
-  }
+  let guessInput = useRef(null)
 
   useEffect(() => {
-    let guessInput = document.querySelector(".guess-form-input");
-    guessInput.focus();
-  }, [guessFormDisabled]);
+    if(!showHelpModal) {
+    guessInput.current.focus()
+  }
+  }, [showHelpModal, guessInput]);
 
   // Microphone
 
@@ -38,42 +28,48 @@ function GuessForm({
 
   function fromMic() {
     let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    // console.log(audioConfig);
     let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-
-    // console.log("Speak into your microphone.");
     recognizer.recognizeOnceAsync((result) => {
-      // console.log(`RECOGNIZED: Text=${result.text}`);
       if (result.text) {
-        let textGuess = result.text.toUpperCase();
-        let newGuess = textGuess.substring(0, textGuess.length - 1);
-        setGuess(newGuess);
+        let rawGuess = result.text.toUpperCase();
+        // the API adds a period at the end of guesses. We need to strip it.
+        let cleanedGuess = rawGuess.substring(0, rawGuess.length - 1);
+        setGuess(cleanedGuess);
         setTimeout(function () {
           setGuess("");
         }, 1500);
-        checkForMatches(newGuess);
+        checkForMatches(cleanedGuess);
       }
     });
   }
 
-  const toRender = currentGame ? (
+  if (!currentGame) return null
+
+  const isModalOpen =  showModal || showHelpModal
+
+  return (
     <div className="guess-form-outer-div">
       <div className="guess-form">
-        <form onSubmit={handleSubmit} autoComplete="off" className="form">
+        <form onSubmit={(e) => {
+              e.preventDefault();
+              let capGuess = guess.toUpperCase();
+              checkForMatches(capGuess);
+              setGuess("");
+        }} autoComplete="off" className="form">
           <input
-            autoFocus="true"
-            autoselect="true"
+            ref={guessInput}
+            autofocus="true"
             className="guess-form-input"
             type="text"
             name="guess"
             value={guess}
-            onChange={handleChange}
+            onChange={(e) => setGuess(e.target.value.toUpperCase())}
             disabled={guessFormDisabled}
           />
           <br></br>
           <input
             className={
-              showModal || showHelpModal ? "login-btn-fade" : "login-btn"
+              isModalOpen ? "login-btn-fade" : "login-btn"
             }
             type="submit"
             value="GUESS"
@@ -81,20 +77,15 @@ function GuessForm({
           <button
             onClick={fromMic}
             className={
-              showModal || showHelpModal ? "login-btn-fade" : "login-btn"
+              isModalOpen ? "login-btn-fade" : "login-btn"
             }
           >
             🎤
           </button>
         </form>
       </div>
-      <div>{guessAlert}</div>
     </div>
-  ) : (
-    <div></div>
-  );
-
-  return toRender;
+  )
 }
 
 export default GuessForm;
