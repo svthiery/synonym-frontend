@@ -350,6 +350,7 @@ function GameContainer({
               guessFormDisabled={guessFormDisabled}
               showModal={showModal}
               showHelpModal={showHelpModal}
+              showWrongGuessModal={showWrongGuessModal}
             />
           ) : (
             <div></div>

@@ -8,17 +8,19 @@ function GuessForm({
   guessFormDisabled,
   showModal,
   showHelpModal,
+  showWrongGuessModal
 }) {
 
+  // Use ref to bring refocus on guess form after any modal closes and if no other modal is open
   let guessInput = useRef(null)
 
   useEffect(() => {
-    if(!showHelpModal) {
+    if(!showHelpModal && !showWrongGuessModal && !showModal && !guessFormDisabled) {
     guessInput.current.focus()
   }
-  }, [showHelpModal, guessInput]);
+  }, [showHelpModal, showWrongGuessModal, showModal, guessFormDisabled, guessInput]);
 
-  // Microphone
+  // ----------------- MICROPHONE ----------------------------------
 
   const sdk = require("microsoft-cognitiveservices-speech-sdk");
   const speechConfig = sdk.SpeechConfig.fromSubscription(
@@ -43,6 +45,8 @@ function GuessForm({
     });
   }
 
+  // ---------------------------------------------------------------
+
   if (!currentGame) return null
 
   const isModalOpen =  showModal || showHelpModal
@@ -50,21 +54,26 @@ function GuessForm({
   return (
     <div className="guess-form-outer-div">
       <div className="guess-form">
-        <form onSubmit={(e) => {
-              e.preventDefault();
-              let capGuess = guess.toUpperCase();
-              checkForMatches(capGuess);
-              setGuess("");
-        }} autoComplete="off" className="form">
+        <form 
+          autoComplete="off"
+          className="form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            let capGuess = guess.toUpperCase();
+            checkForMatches(capGuess);
+            setGuess("");
+            }
+          } 
+          >
           <input
-            ref={guessInput}
             autofocus="true"
             className="guess-form-input"
-            type="text"
-            name="guess"
-            value={guess}
-            onChange={(e) => setGuess(e.target.value.toUpperCase())}
             disabled={guessFormDisabled}
+            name="guess"
+            onChange={(e) => setGuess(e.target.value.toUpperCase())}
+            ref={guessInput}
+            type="text"
+            value={guess}
           />
           <br></br>
           <input
@@ -75,10 +84,10 @@ function GuessForm({
             value="GUESS"
           />
           <button
-            onClick={fromMic}
             className={
               isModalOpen ? "login-btn-fade" : "login-btn"
             }
+            onClick={fromMic}
           >
             🎤
           </button>
