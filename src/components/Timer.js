@@ -5,8 +5,8 @@ function Timer({
   setSeconds,
   timerIsActive,
   stopTimer,
-  // gameScore, 
-  // setGameScore, 
+  // gameScore,
+  // setGameScore,
   // roundScore
 }) {
   useEffect(() => {
