@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
 
 function GuessForm({
+  checkForMatches,
   currentGame,
   guess,
-  setGuess,
-  checkForMatches,
   guessFormDisabled,
+  setGuess,
   showModal,
   showHelpModal,
   showWrongGuessModal
@@ -14,18 +14,20 @@ function GuessForm({
   // Use ref to bring refocus on guess form after any modal closes and if no other modal is open
   let guessInput = useRef(null)
 
+  const isModalOpen =  showModal || showHelpModal || showWrongGuessModal
+
   useEffect(() => {
-    if(!showHelpModal && !showWrongGuessModal && !showModal && !guessFormDisabled) {
-    guessInput.current.focus()
-  }
-  }, [showHelpModal, showWrongGuessModal, showModal, guessFormDisabled, guessInput]);
+    if (!isModalOpen && !guessFormDisabled) {
+      guessInput.current.focus()
+    }
+  }, [isModalOpen, guessFormDisabled, guessInput]);
 
   // ----------------- MICROPHONE ----------------------------------
 
   const sdk = require("microsoft-cognitiveservices-speech-sdk");
   const speechConfig = sdk.SpeechConfig.fromSubscription(
     "de62f611b6e44532ac74fcb92e019042",
-    "eastus"
+    "eastus",
   );
 
   function fromMic() {
@@ -49,19 +51,17 @@ function GuessForm({
 
   if (!currentGame) return null
 
-  const isModalOpen =  showModal || showHelpModal
-
   return (
     <div className="guess-form-outer-div">
       <div className="guess-form">
         <form 
           autoComplete="off"
           className="form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            let capGuess = guess.toUpperCase();
-            checkForMatches(capGuess);
-            setGuess("");
+          onSubmit={(event) => {
+              event.preventDefault();
+              const capGuess = guess.toUpperCase();
+              checkForMatches(capGuess);
+              setGuess("");
             }
           } 
           >
@@ -70,12 +70,12 @@ function GuessForm({
             className="guess-form-input"
             disabled={guessFormDisabled}
             name="guess"
-            onChange={(e) => setGuess(e.target.value.toUpperCase())}
+            onChange={(event) => setGuess(event.target.value.toUpperCase())}
             ref={guessInput}
             type="text"
             value={guess}
           />
-          <br></br>
+          <br/>
           <input
             className={
               isModalOpen ? "login-btn-fade" : "login-btn"
